@@ -5,8 +5,11 @@ from __future__ import unicode_literals
 AUTHOR = u'Olga Botvinnik'
 SITENAME = u'Science, meet productivity'
 SITEURL = ''
+ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
+ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 
-TIMEZONE = 'Europe/Paris'
+
+TIMEZONE = 'America/Los_Angeles'
 
 DEFAULT_LANG = u'en'
 
