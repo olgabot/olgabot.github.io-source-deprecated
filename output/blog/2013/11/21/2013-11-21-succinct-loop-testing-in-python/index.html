@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Science, meet productivity, ">
+
+
+        <title>Succinct loop testing in Python // Science, meet productivity // </title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../theme/css/pure.css">
+    <link rel="stylesheet" href="../../../../../theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="pure-g-r" id="layout">
+        <div class="sidebar pure-u">
+            <div class="cover-img" style="background-image: url('')">
+                <div class="cover-body">
+                    <header class="header">
+                        <hgroup>
+                            <h1 class="brand-main"><a href="/">Science, meet productivity</a></h1>
+                            <p class="tagline"></p>
+                                <p class="social">
+                                    <a href="#">
+                                        <i class="fa fa-You can add links in your config file fa-3x"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-Another social link fa-3x"></i>
+                                    </a>
+                                <p>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Succinct loop testing in Python</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="../../../../../tag/python.html">python</a>
+                                <a class="post-category" href="../../../../../tag/for-loops.html">for loops</a>
+                                <a class="post-category" href="../../../../../tag/testing.html">testing</a>
+                                <a class="post-category" href="../../../../../tag/data-science.html">data science</a>
+                        </p>
+                </header>
+            </section>
+            <p>Since I'm a data scientist and all, my datasets can be too big to deal with when I'm initially testing an idea. So to test a for loop in Python with just a few examples, I used to do this kind of stuff:</p>
+<div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">thing</span> <span class="n">in</span> <span class="n">things</span><span class="o">:</span>
+    <span class="n">print</span> <span class="n">thing</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="o">:</span>
+        <span class="k">break</span>
+</pre></div>
+
+
+<p>But python's <code>zip</code> is smart in that it stops when the shortest item in the zip stops!</p>
+<p>So you can do:</p>
+<div class="highlight"><pre><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">thing</span> <span class="n">in</span> <span class="n">zip</span><span class="p">(</span><span class="n">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">things</span><span class="p">)</span><span class="o">:</span>
+<span class="err"> </span> <span class="err"> </span> <span class="n">print</span> <span class="n">thing</span>
+</pre></div>
+
+
+<p>And it will only show you the first 5 things! And it's so succinct! This is especially pertinent when your <code>things</code> is a generator and you can't necessarily get the <code>len</code> of it.</p>
+<p>Hope that helps you out! It saves me some headache, KeyboardInterrupts, and keystrokes.</p>
+            <a href="#" class="go-top">Go Top</a>
+<footer class="footer">
+    <p>&copy; Olga Botvinnik &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure-single">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+    </div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+
+</body>
+</html>

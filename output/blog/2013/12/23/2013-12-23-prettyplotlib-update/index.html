@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Science, meet productivity, ">
+
+
+        <title>Prettyplotlib update! // Science, meet productivity // </title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../theme/css/pure.css">
+    <link rel="stylesheet" href="../../../../../theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="pure-g-r" id="layout">
+        <div class="sidebar pure-u">
+            <div class="cover-img" style="background-image: url('')">
+                <div class="cover-body">
+                    <header class="header">
+                        <hgroup>
+                            <h1 class="brand-main"><a href="/">Science, meet productivity</a></h1>
+                            <p class="tagline"></p>
+                                <p class="social">
+                                    <a href="#">
+                                        <i class="fa fa-You can add links in your config file fa-3x"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-Another social link fa-3x"></i>
+                                    </a>
+                                <p>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Prettyplotlib update!</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="../../../../../tag/python.html">python</a>
+                                <a class="post-category" href="../../../../../tag/dataviz.html">dataviz</a>
+                                <a class="post-category" href="../../../../../tag/prettyplotlib.html">prettyplotlib</a>
+                                <a class="post-category" href="../../../../../tag/pydata.html">pydata</a>
+                        </p>
+                </header>
+            </section>
+            <p>Check it out: http://nbviewer.ipython.org/github/olgabot/prettyplotlib/blob/master/ipython_notebooks/Examples%20of%20everything%20pretty%20and%20plotted!.ipynb?create=1</p>
+<p>Major changes:</p>
+<ul>
+<li>Don't have to supply <code>ax</code> object to everything</li>
+<li>All functions return an <code>ax</code> object (let me know if this is not true!)</li>
+<li>Added <code>fill_between</code> and <code>fill_betweenx</code></li>
+<li><code>pcolormesh</code> accepts <code>center_value</code> keyword argument ('kwarg') to re-center diverging colormaps</li>
+<li>Don't change <code>rcParams</code> upon import, do everything programmatically</li>
+<li>Major refactoring - every function is now in its own file, java-style (we'll see how that goes..)</li>
+</ul>
+            <a href="#" class="go-top">Go Top</a>
+<footer class="footer">
+    <p>&copy; Olga Botvinnik &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure-single">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+    </div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+
+</body>
+</html>

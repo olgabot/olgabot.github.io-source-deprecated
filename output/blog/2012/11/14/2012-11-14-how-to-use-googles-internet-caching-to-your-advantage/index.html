@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Science, meet productivity, ">
+
+
+        <title>How to use Google's internet caching to your advantage // Science, meet productivity // </title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../theme/css/pure.css">
+    <link rel="stylesheet" href="../../../../../theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="pure-g-r" id="layout">
+        <div class="sidebar pure-u">
+            <div class="cover-img" style="background-image: url('')">
+                <div class="cover-body">
+                    <header class="header">
+                        <hgroup>
+                            <h1 class="brand-main"><a href="/">Science, meet productivity</a></h1>
+                            <p class="tagline"></p>
+                                <p class="social">
+                                    <a href="#">
+                                        <i class="fa fa-You can add links in your config file fa-3x"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-Another social link fa-3x"></i>
+                                    </a>
+                                <p>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>How to use Google's internet caching to your advantage</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="../../../../../tag/google.html">google</a>
+                                <a class="post-category" href="../../../../../tag/disprot.html">disprot</a>
+                                <a class="post-category" href="../../../../../tag/internet-caching.html">internet caching</a>
+                                <a class="post-category" href="../../../../../tag/search-tricks.html">search tricks</a>
+                                <a class="post-category" href="../../../../../tag/tutorial.html">tutorial</a>
+                        </p>
+                </header>
+            </section>
+            <p>You've run into this problem: you search for something on the supposedly all-powerful Google search, click the link, but it's dead. Nothing's there. Not even a speck of information.</p>
+<p>But Google said there was!</p>
+<p>I ran into this exact problem for an assignment this week. We were supposed to use the Disordered Protein database <a href="www.disprot.org">DisProt</a> and use the <a href="www.disprot.org/pondr-fit.php">PONDR-FIT</a> algorithm to find a protein that is predicted to be disordered, but is not in the DisProt database. However, the DisProt servers went down as of noon yesterday. With the assignment due today, what are we to do? Well, the due date was pushed back but I figured out how to search Disprot even though it was down, and learned a bit about Google's <a href="http://www.googleguide.com/cached_pages.html">internet caching</a> (aka their plan to save all the knowledge ever publicly posted to the web.) in the process.</p>
+<h2>Viewing cached pages: step-by-step</h2>
+<ol>
+<li>Do a Google search as usual</li>
+<li>Hover your cursor over the result you want, and you should see two arrowheads pointing to the right: &gt;&gt;   Click on them.</li>
+<li>A preview of your page should appear on the right.</li>
+</ol>
+<p>Below is an example:</p>
+<p><img alt="How to view cached pages" src="http://media.tumblr.com/tumblr_mdicicTCHG1rw6gvj.png" /></p>
+<h2>Turn on "Verbatim" mode to narrow your results</h2>
+<p>But what if you need to validate negative results, as we did for our assignment? Use "Verbatim" mode, which will stop auto-correcting your spelling to get you more result hits.</p>
+<h3>Without "Verbatim" mode</h3>
+<p>Without "Verbatim" mode, my "disprot oct4" query gets mangled to "disport oct4" and I get lyrics for some weird band I've never heard of.</p>
+<p><img alt="" src="http://media.tumblr.com/tumblr_mdicq6iryf1rw6gvj.png" /></p>
+<p>To turn on "Verbatim" mode:</p>
+<ol>
+<li>Do a Google search as usual</li>
+<li>Click "Search Tools" in the bar below the search box</li>
+<li>Click "All results" (you want to filter so you <em>don't</em> get all results)</li>
+<li>Click "Verbatim"</li>
+</ol>
+<p>A visual tutorial is here:</p>
+<p><img alt="" src="http://media.tumblr.com/tumblr_mdicxxZ91H1rw6gvj.png" /></p>
+<h3>With "Verbatim" mode</h3>
+<p>With "Verbatim" mode on, I get totally weird results which means that "oct4" is indeed nowhere to be found on DisProt!</p>
+<p><img alt="" src="http://media.tumblr.com/tumblr_mdicz6uC2H1rw6gvj.png" /></p>
+<h2>Final note</h2>
+<p>Someone may have removed content from the internet for a reason such as copyright infringement. Please respect the owner of the intellectual property and do not use this method to crawl for copyrighted data.</p>
+            <a href="#" class="go-top">Go Top</a>
+<footer class="footer">
+    <p>&copy; Olga Botvinnik &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure-single">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+    </div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+
+</body>
+</html>

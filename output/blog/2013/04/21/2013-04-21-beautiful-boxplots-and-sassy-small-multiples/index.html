@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Science, meet productivity, ">
+
+
+        <title>Beautiful boxplots and sassy small multiples // Science, meet productivity // </title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../theme/css/pure.css">
+    <link rel="stylesheet" href="../../../../../theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="pure-g-r" id="layout">
+        <div class="sidebar pure-u">
+            <div class="cover-img" style="background-image: url('')">
+                <div class="cover-body">
+                    <header class="header">
+                        <hgroup>
+                            <h1 class="brand-main"><a href="/">Science, meet productivity</a></h1>
+                            <p class="tagline"></p>
+                                <p class="social">
+                                    <a href="#">
+                                        <i class="fa fa-You can add links in your config file fa-3x"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-Another social link fa-3x"></i>
+                                    </a>
+                                <p>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Beautiful boxplots and sassy small multiples</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="../../../../../tag/python.html">python</a>
+                                <a class="post-category" href="../../../../../tag/programming.html">programming</a>
+                                <a class="post-category" href="../../../../../tag/graphicdesign.html">GraphicDesign</a>
+                                <a class="post-category" href="../../../../../tag/edwardtufte.html">edwardtufte</a>
+                                <a class="post-category" href="../../../../../tag/boxplots.html">boxplots</a>
+                                <a class="post-category" href="../../../../../tag/small-multiples.html">small multiples</a>
+                                <a class="post-category" href="../../../../../tag/matplotlib.html">matplotlib</a>
+                        </p>
+                </header>
+            </section>
+            <p>Last week, I <a href="http://blog.olgabotvinnik.com/post/47682463203/implementing-graphic-design-principles-in-pythons">posted</a> about implementing design principles in Python's graphic library, matplotlib. I received lots of great feedback, and made another tutorial, specifically about boxplots and <a href="http://en.wikipedia.org/wiki/Small_multiple"><em>"small multiples"</em></a>. Small multiples are a concept coined by Edward Tufte about having many plots using the exact same axes, allowing the reader to discover patterns by eye, though here I also add linear regression to aid the eye.</p>
+<p>Enjoy the tutorial <a href="http://nbviewer.ipython.org/5432378">here</a>!</p>
+            <a href="#" class="go-top">Go Top</a>
+<footer class="footer">
+    <p>&copy; Olga Botvinnik &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure-single">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+    </div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+
+</body>
+</html>

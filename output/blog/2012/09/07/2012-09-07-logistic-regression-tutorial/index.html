@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Science, meet productivity, ">
+
+
+        <title>1, 2, 3 ... logistic regression! // Science, meet productivity // </title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../theme/css/pure.css">
+    <link rel="stylesheet" href="../../../../../theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="pure-g-r" id="layout">
+        <div class="sidebar pure-u">
+            <div class="cover-img" style="background-image: url('')">
+                <div class="cover-body">
+                    <header class="header">
+                        <hgroup>
+                            <h1 class="brand-main"><a href="/">Science, meet productivity</a></h1>
+                            <p class="tagline"></p>
+                                <p class="social">
+                                    <a href="#">
+                                        <i class="fa fa-You can add links in your config file fa-3x"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-Another social link fa-3x"></i>
+                                    </a>
+                                <p>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>1, 2, 3 ... logistic regression!</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="../../../../../tag/r.html">R</a>
+                                <a class="post-category" href="../../../../../tag/logistic-regression.html">logistic regression</a>
+                                <a class="post-category" href="../../../../../tag/tutorial.html">tutorial</a>
+                                <a class="post-category" href="../../../../../tag/star-trek.html">star trek</a>
+                        </p>
+                </header>
+            </section>
+            <h2>R Tutorial in Logistic Regression</h2>
+<p>Recently I read a <a href="http://www.nature.com/msb/journal/v3/n1/full/msb4100180.html">paper</a> 
+that used logistic regression in its methods
+and realized I had no idea what logistic regression <em>is</em>, so I made this tutorial
+for myself and others to learn about it. I wanted to create a tutorial that created 
+random data that anyone could use, and taught you a bit about R in the process. This 
+is my first tutorial and feedback is encouraged.</p>
+<p>This tutorial on the statistical machine-learning method known as Logistic
+Regression is implemented in <a href="r-project.org">R</a>. Familiarity with programming
+syntax, such as vector indexing, is assumed but I tried to make this tutorial
+as accessible as possible for those with less programming experience.</p>
+<h1>What in Merlin's beard is <em>logistic regression?</em></h1>
+<h2>First, what is <em>regression</em>?</h2>
+<p>You may have heard of "linear regression," which fits a $y=mx+b$ line to a set of points, such as in the figure below. I'm not going to go into the details of linear regression, but you can <a href="http://www.stat.yale.edu/Courses/1997-98/101/linreg.htm">read about it</a> if you like.</p>
+<p><img alt="Linear regression matches a best-fitting line to a set of data." src="http://media.tumblr.com/tumblr_mdorakn4cw1rw6gvj.png" /></p>
+<!-- Add description of Logit function -->
+
+<p>Logistic regression is similar, but instead of having two continuous variables as above, one of the variables is binary (0 or 1) and the other is continuous. But we're not fitting a line, we're fitting a <em>logit</em>, which is a totally different function that estimates probability for a continuous variable rather than assigns classification. For example, we could predict the probability
+of cancer relapse given some gene expression values. Or the probability of a heart attack
+given a person's cholesterol levels. We would base these probabilities on
+previously encountered data, a method of machine learning known as 
+"Supervised Learning." You tell the computer what the answer is for many examples, and then the computer has to guess whether the outcome is 0 or 1.</p>
+<p>Think of it this way: you look at hundreds of values representing the number of 
+<em>Star Trek: The Next Generation</em> episodes a person has watched, with a teacher 
+peering over your shoulder, and he tells you whether each value is associated 
+with attending a <em>Star Trek</em> convention or not. Then the teacher leaves, and
+you're given a new number of <em>Star Trek: TNG</em> episodes, $x$, and you have to give a 
+probability $p$ whether the person who has seen this many episodes has been to a 
+convention. The probability of $x$ episodes watched and no convention attendance
+is $1-p$, so by knowing $p$, we also know $1-p$ and we only need to specify one value.</p>
+<h2>Regression is not the same thing as classification</h2>
+<p>This is an important distinction between classification and regression. If we were
+doing classification, we would just say whether the person who has seen $x$ number 
+of episodes has gone to a convention or not. But
+we don't always want a binary outcome. The cholesterol-heart attack association is a 
+great example of this. You probably don't want to tell a patient, "You <em>will</em> have a 
+heart attack," but rather say "You have an $x$% probability of having a heart
+attack, given your current cholesterol levels." Same goes for cancer relapse. A
+binary yes/no answer can obscure the data. Also, a probability of 0 is essentially 
+impossible. Could you truly, definitively, say that a person will <em>never</em> have a 
+heart attack? Not until their death, but then all possible heart attack events have
+already been observed. Sorry for the gruesome-ness.</p>
+<h2>So what about this <em>logisitic</em> thing?</h2>
+<h3>First, we have to talk about <em>odds</em></h3>
+<p>We talked about predicting the probability of some event. But we're going to use 
+<em>odds</em> instead. If the probability of having attended a <em>Star Trek: TNG</em> convention
+is $p$, then the odds are:</p>
+<p>$$\text{odds} = \frac{\text{probability of event ocurring}}{\text{probability of event not occuring}} = \frac{p}{1-p}$$</p>
+<p>Say after watching a certain number of episodes, the probability of attending a 
+convention is $p=0.7$. Then the odds of attending a convention are </p>
+<p>$$\frac{0.7}{0.3} = 2.333\ldots$$</p>
+<p>But the odds of not attending a convention are </p>
+<p>$$\frac{0.3}{0.7} = 0.4285\ldots$$ </p>
+<p>As you can see, odds and probability are not the same. Odds can be greater than 1, and probability must be between 0 and 1. </p>
+<h3>Next, we have to define <em>log-odds</em></h3>
+<p>It would be nice if these odds were somehow symmetric and we could intuitively make 
+inferences just by looking at the value. This is where the logarithm comes in. If we 
+take the <a href="http://en.wikipedia.org/wiki/Natural_logarithm">natural log</a> (ln), aka 
+$\log_e$ of the odds of attending a convention, we get</p>
+<p>$$\ln \frac{0.7}{0.3} = 0.8472\ldots$$</p>
+<p>And the log-odds of <em>not</em> attending a convention:</p>
+<p>$$\frac{0.3}{0.7} = -0.8472\ldots$$ </p>
+<p>The opposite of attending a convention is the negative of attending a convention! 
+Now let's stop and think. <em>Why</em> is this? This is because the natural log of 1 is 0,
+so it intersects at 0 as in the plot below. Then the natural log of anything smaller 
+than 1 is negative, approaching negative infinity as the number gets closer and 
+closer to 0. The natural log of anything larger than 1 is positive, and approaches 
+positive infinity as the number gets larger and larger, but slower than we approach 
+negative infinity from the other side. </p>
+<p><img alt="Natural log function" src="http://media.tumblr.com/tumblr_mdorb7uHwT1rw6gvj.png" /></p>
+<p>This symmetry is helpful to guide our intuition about events occurring or not 
+occuring.</p>
+<p><em>FYI:</em> We used the natural logarithm here because that's the standard. You could
+really use any log base you like, even $\log_\pi$ would do, but it's just not
+used that often.</p>
+<h3>From log-odds to <em>logits</em></h3>
+<p>The log-odds are also called the <em>logit</em> of the probability:</p>
+<p>$$ \log(\text{odds}) = \text{logit}(p) = \ln\left( \frac{p}{1-p} \right) $$</p>
+<p>In logistic regression, we set </p>
+<p>$$\text{logit}(p) = a_0 + a_1x_1 + a_2x_2, \ldots , a_nx_n$$.</p>
+<p>Where $n$ is the number of independent variables you have. In our case, we just have one independent variable, $x = x_1$, the number of <em>Star Trek: TNG</em> episodes viewed. But we could add to the complexity and also have $x_2$ be the number of <em>Star Trek: The Original Series</em> (<a href="http://mashable.com/2012/09/07/google-star-trek/">happy 46th anniversary!</a>) episodes viewed, $x_3$ be number of <a href="http://en.memory-alpha.org/wiki/Latinum">latinum strips</a> owned, and $x_4$ be <a href="http://www.amazon.com/Star-Trek-Conversational-Marc-Okrand/dp/0671797395">Klingon language proficiency</a>. But we're going to keep it simple and stick to our one $x$.</p>
+<p>Now we could do regular ol' linear regression on this, but there are several issues.</p>
+<ol>
+<li>We have a binary variable for our dependent variable (aka the $y$), and linear regression assumes a continuous distribution for the dependent variable. With probability as the output, we cannot have values less than 0 or greater than 1, and linear regression does not conform to this.</li>
+<li>The variance of $y$ is not constant across values of $x$. The variance is $p(1-p) = pq$ ($q$ is short for $1-p$), and if we have a probability of $0.50$ of attending a <em>Star Trek</em> convention, then we have $0.5\times 0.5 = 0.25$ odds. But if we have $p=0.9$, then the variance $pq = 0.9\times 0.1 = 0.09$, and $0.25 \neq 0.09$. Thus the assumption that variance of $y$ is constant across values of $x$ is invalid. This is also called <a href="http://blog.minitab.com/blog/statistics-and-quality-data-analysis/dont-be-a-victim-of-statistical-hippopotomonstrosesquipedaliophobia">homoscedasticity</a>. </li>
+<li>If you want to do significance testing (you maybe familiar with <em>p</em>-values or <em>R</em>-values to describe how significant a result is), the assumption that the errors of prediction, $Y-Y^\prime$ are <a href="http://en.wikipedia.org/wiki/Normal_distribution">normally distributed</a> doesn't work. $Y$ only takes on the values 0 and 1, so there's no way you can create a continuous distribution such as a normal distribution with just two values.</li>
+</ol>
+<p>Logits are not very intuitive as a unit, even though they are very helpful when looking at odds. But we need to get back to probabilities so we can give a probability of convention attendance. We'll have to exponentiate both sides to get rid of the natural log. I'm going to keep the long-form version of the equation so you can see how it works for more variables.</p>
+<p>$$
+\begin{align}
+\text{logit}(p) &amp;= \ln\left( \frac{p}{1-p} \right) = a_0 + a_1x_1 + a_2x_2, \ldots , a_nx_n\newline
+\frac{p}{1-p} &amp;= e^{a_0 + a_1x_1 + a_2x_2, \ldots , a_nx_n} \newline
+p &amp;= (1-p)e^{a_0 + a_1x_1 + a_2x_2, \ldots , a_nx_n} \newline
+p + p(e^{-(a_0 + a_1x_1 + a_2x_2, \ldots , a_nx_n)}) &amp;= 1 \newline
+1 + e^{`(a_0 + a_1x_1 + a_2x_2, \ldots , a_nx_n)} &amp;= \frac{1}{p}\newline
+\frac{1}{1+e^{-(a_0 + a_1x_1 + a_2x_2, \ldots , a_nx_n)}} &amp;= p
+\end{align}
+$$</p>
+<p>We can multiply the fraction by a clever form of 1, $e^{(a_0 + a_1x_1 + a_2x_2, \ldots , a_nx_n)}/e^{(a_0 + a_1x_1 + a_2x_2, \ldots , a_nx_n)}$ to get</p>
+<p>$$
+p = \frac{e^{(a_0 + a_1x_1 + a_2x_2, \ldots , a_nx_n)}}{1+e^{(a_0 + a_1x_1 + a_2x_2, \ldots , a_nx_n)}}.
+$$</p>
+<p>If we set $a_1 = 1$ and all other $a_0, a_2, a_3, \ldots = 0$, then we get the general logit cuve below</p>
+<p><img alt="The logit curve ranges from negative infinity to positive infinity on the x-axis, and from 0 to 1 on the y-axis." src="http://media.tumblr.com/tumblr_mdorbq7Ixx1rw6gvj.png" /></p>
+<p>So now we have a way of creating a predictor of the probability of a binary variable from a continuous variable. Now let's get started with doing regression.</p>
+<p><em>PS, if you want to get math typesetting (aka LaTeX) on your blog, I recommend 
+<strong>against</strong> searching for "tumblr latex" and instead checking out <a href="http://checkmyworking.com/2012/01/how-to-get-beautifully-typeset-maths-on-your-blog/">this tutorial</a> on installing MathJax on your blog, tumblr or not.</em></p>
+<h1>Step 1: Get binary data.</h1>
+<h2>Initialize a vector of 0's</h2>
+<p>For this case, we are going to make up some binary data. According to <a href="http://www.statgun.com/tutorials/logistic-regression.html">a nice explanation of logistic regression</a>,
+logistic regression requires at least 50 data points per classification. Meaning, 
+50+ 0's and 50+ 1's. There are 178 total <em>Star Trek: TNG</em> episodes and lots of bonus 
+features and interviews on the DVDs, so let's round up to 200 total <em>TNG</em> pieces of 
+video. In R, <code>rep</code> is the function to create a vector of repeated values. The
+first argument is what you want repeated, and the second argument is how
+many times you want to repeat it. You could even have a vector in the first 
+argument, such as <code>rep(c("red", "blue"), 30)</code>, to get a vector of alternating 
+strings, "red" and "blue." We could have also made the same vector
+with <code>classification = vector(length=200, mode="numeric")</code>, which initializes
+the numeric values at 0, but I decided to do it with <code>rep</code> instead.</p>
+<div class="highlight"><pre><span class="n">classification</span> <span class="o">=</span> <span class="n">rep</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+
+
+<p>EDIT: I've been informed that at 50+ data points is not always necessary, so take the rule with a grain of salt.</p>
+<h2>Set a random seed</h2>
+<p>Let's set the random seed so we will get consistently the same results, no
+matter how many times we run the code. No random number generator is truly random,
+and part of the semi-randomness is starting with a seed number, and then doing 
+all kinds of transformations to then get a "random" number. So if we make sure
+we are always using the same seed, then we will always get the same set of
+"random" numbers.</p>
+<div class="highlight"><pre><span class="n">set</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>Randomly add 1s to the last part of the vector</h2>
+<p>Now let's randomly add a bunch of 1s to the vector, ramping up the probability of 
+getting a one (with hyperbolic growth, if you're being technical) as we get to 
+the end of the vector. Let's be interesting and add some noise to the data so 
+we don't have not do an equal 50/50 split. We'll use a randomly-generated
+probability distribution to assign 0 or 1 to the last 125 values. This way, our
+data is a little more realistic and less clean.</p>
+<p>FYI, <code>runif</code> is the <a href="http://en.wikipedia.org/wiki/Uniform_distribution_(continuous)">uniform distribution function</a>
+in R, which has an equal probability of obtaining every value between 0 and 1.
+It is useful in this assignment because I know that the odds are 50/50 that
+the value will be greater than 0.5, so I increased the threshold to &gt;0.6
+and added a multiplicative factor, which varies from 1 to 125. This way, the
+values near the beginning of the vector have close to a 60/40 chance of being
+less than 0.6, but by the end, they are almost certainly all above 0.6.
+Take a look below.</p>
+<p>The multiplicative factor:
+FYI, the <code>str</code> function is a method of previewing the first few values of
+variables without seeing everything at once. It can be handy. Another method is
+<code>head</code>, which like the *NIX head, shows the first few values, but it can
+be annoying if you have a matrix with a large number of columns, say over 100. Then
+you get the first 10 values for all 100 columns, which takes up a lot of space. <code>str</code>
+can be more convenient in that case.</p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">str</span><span class="p">(</span><span class="mi">125</span><span class="o">/</span><span class="mi">125</span><span class="o">:</span><span class="mi">1</span><span class="p">)</span>
+ <span class="n">num</span> <span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">125</span><span class="p">]</span> <span class="mi">1</span> <span class="mf">1.01</span> <span class="mf">1.02</span> <span class="mf">1.02</span> <span class="mf">1.03</span> <span class="p">...</span>
+</pre></div>
+
+
+<p>Randomly generated values in the uniform distribution:
+(Notice that I re-set the random number seed. This is because after
+a random seed is used, the random number generator advances to the next seed.)</p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">set</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="n">str</span><span class="p">(</span><span class="n">runif</span><span class="p">(</span><span class="mi">125</span><span class="p">))</span>
+ <span class="n">num</span> <span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">125</span><span class="p">]</span> <span class="mf">0.3078</span> <span class="mf">0.2577</span> <span class="mf">0.5523</span> <span class="mf">0.0564</span> <span class="mf">0.4685</span> <span class="p">...</span>
+</pre></div>
+
+
+<p>Multiplicative factor times the uniform distribution vector:
+(For those Linear Algebra lovers out there, we don't get a matrix because by 
+default, R multiplies vectors on an element-by-element basis. If you want
+the usual vector product, aka the cross product, do <code>vector1 %*% vector2</code>)</p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">set</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="n">str</span><span class="p">(</span><span class="n">runif</span><span class="p">(</span><span class="mi">125</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">125</span><span class="o">/</span><span class="mi">125</span><span class="o">:</span><span class="mi">1</span><span class="p">))</span>
+ <span class="n">num</span> <span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">125</span><span class="p">]</span> <span class="mf">0.3078</span> <span class="mf">0.2598</span> <span class="mf">0.5613</span> <span class="mf">0.0578</span> <span class="mf">0.484</span> <span class="p">...</span>
+</pre></div>
+
+
+<p>Now we can use <code>ifelse</code> to assign a 0 or 1 based on whether the vector we just
+created is greater than 0.6 or not.</p>
+<div class="highlight"><pre><span class="n">set</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="n">classification</span><span class="p">[</span><span class="mi">76</span><span class="o">:</span><span class="mi">200</span><span class="p">]</span> <span class="o">=</span> <span class="n">ifelse</span><span class="p">(</span><span class="n">runif</span><span class="p">(</span><span class="mi">125</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">125</span><span class="o">/</span><span class="mi">125</span><span class="o">:</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>The final binary vector</h2>
+<p>This is what I get for the binary classification vector. Keep in mind that we only 
+added 1's to the last 125 values, or from index 76 and up.</p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">classification</span>
+  <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+ <span class="p">[</span><span class="mi">38</span><span class="p">]</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+ <span class="p">[</span><span class="mi">75</span><span class="p">]</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span>
+<span class="p">[</span><span class="mi">112</span><span class="p">]</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span>
+<span class="p">[</span><span class="mi">149</span><span class="p">]</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="p">[</span><span class="mi">186</span><span class="p">]</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span>
+</pre></div>
+
+
+<h1>Step 2: Get some continuous data.</h1>
+<p>We're going to make up continuous data similarly to how we created the binary 
+classification vector. This time, we set the next seed so we'd get different 
+numbers, and multiplied a uniform distribution by a linear function. Now this isn't
+quite enough to make most of the 1's be in the upper numbers and most of the 0's
+be in the lower numbers, so we add a linearly increasing amount of Gaussian noise
+to the values.</p>
+<div class="highlight"><pre><span class="n">set</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span> <span class="n">continuous</span> <span class="o">=</span> <span class="n">runif</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="o">:</span><span class="mi">200</span><span class="o">+</span><span class="n">rnorm</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="n">mean</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">sd</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="o">:</span><span class="mi">200</span>
+</pre></div>
+
+
+<p>My continuous vector looks like this:</p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">str</span><span class="p">(</span><span class="n">continuous</span><span class="p">)</span>
+ <span class="n">num</span> <span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">200</span><span class="p">]</span> <span class="mf">51.7</span> <span class="mf">94.2</span> <span class="mf">184.1</span> <span class="mf">226.1</span> <span class="mf">269.9</span> <span class="p">...</span>
+</pre></div>
+
+
+<p>As you can see, we have values larger than 200, but we assumed there are 200 pieces of <em>Star Trek: TNG</em> video media to watch, so we need to normalize it by the max. Now our maximum value is 1, so we multiply by 200 to get a maximum value of 200.</p>
+<div class="highlight"><pre><span class="o">&gt;</span> <span class="n">continuous</span> <span class="o">=</span> <span class="n">continuous</span><span class="o">/</span><span class="n">max</span><span class="p">(</span><span class="n">continuous</span><span class="p">)</span> <span class="o">*</span> <span class="mi">200</span>
+</pre></div>
+
+
+<h2>What does our data look like?</h2>
+<p>Now if we plot the continuous vector vs the binary vector, we'll see that in general,
+the 0's occur in the lower end of the continuous spectrum, and the 1's occur in the
+higher end of the continuous spectrum.</p>
+<!-- fix data because continuous goes up to 10,000 -->
+
+<div class="highlight"><pre><span class="n">png</span><span class="p">(</span><span class="s">&quot;~/workspace/tutorials/logistic_regression_points.png&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">continuous</span><span class="p">,</span> <span class="n">classification</span><span class="p">,</span> <span class="n">pch</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">dev</span><span class="p">.</span><span class="n">off</span><span class="p">()</span>
+</pre></div>
+
+
+<p><img alt="The continuous vector on the x-axis vs the binary vector in the y-axis. Notice that most of the values classified as 0 appear with lower continuous values, and the values classified as 1 appear with higher continuous values." src="http://media.tumblr.com/tumblr_mdorcfiIYs1rw6gvj.png" /></p>
+<p>So according to our data, there's a lot of people who have seen <em>most</em> of <em>Star Trek:TNG</em> and have been to a convention, but there are a few individuals who have seen most of it and yet have not been a convention.</p>
+<h1>Step 3: Do logistic regression!</h1>
+<p>Now you can use generalized linear models to fit to the data. Note: This is one of many methods in R to do logistic regression, and I chose to do the simplest version. Note that <code>classification ~ continuous</code> is shorthand for <code>y ~ x</code>, or as the R people say, <code>response ~ terms</code>. If you had more data points, like Klingon language profiency, you would add this variable by using the <code>cbind</code> or "column bind" function which would create a 2-column matrix from the two vectors: <code>glm(classification ~ cbind(continuous, klingon), ...)</code>.</p>
+<div class="highlight"><pre><span class="nx">glm</span><span class="p">.</span><span class="nx">out</span> <span class="o">=</span> <span class="nx">glm</span><span class="p">(</span><span class="nx">classification</span> <span class="o">~</span> <span class="nx">continuous</span><span class="p">,</span> <span class="nx">family</span><span class="o">=</span><span class="nx">binomial</span><span class="p">(</span><span class="nx">logit</span><span class="p">))</span>
+<span class="nx">png</span><span class="p">(</span><span class="s2">&quot;~/workspace/tutorials/logistic_fitted.png&quot;</span><span class="p">)</span>
+<span class="nx">plot</span><span class="p">(</span><span class="nx">continuous</span><span class="p">,</span> <span class="nx">glm</span><span class="p">.</span><span class="nx">out$fitted</span><span class="p">,</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="nx">col</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="nx">lwd</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nx">main</span><span class="o">=</span><span class="s2">&quot;Logistic function fitted to classification data\nvia a generalized linear model&quot;</span><span class="p">)</span>
+<span class="nx">points</span><span class="p">(</span><span class="nx">continuous</span><span class="p">,</span> <span class="nx">classification</span><span class="p">,</span> <span class="nx">col</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="nx">pch</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="nx">dev</span><span class="p">.</span><span class="nx">off</span><span class="p">()</span>
+</pre></div>
+
+
+<p>The plot of the fitted curve looks like:</p>
+<p><img alt="Logistic curve fitted to data." src="http://media.tumblr.com/tumblr_mdorcxMktg1rw6gvj.png" /></p>
+<h2>So what actually happened here?</h2>
+<p>The <code>glm</code> function found the values of $a_0$ and $a_1$ that minimize the error term. I'm not qualified to describe <code>glm</code> in gory detail, or all the other possible methods of calculating logistic regression, but <a href="http://www.omidrouhani.com/research/logisticregression/html/logisticregression.htm#_Toc147483467">this site</a> gives the mathematics the justice it deserves. You will need to be familiar with linear algebra to fully understand the arguments.</p>
+<h1>FAQ</h1>
+<h2>What if your classification is 1 for the low values and 0 for the high values?</h2>
+<p>You can still use the same steps, but your logit curve will be flipped along the $y$-axis.</p>
+<h2>Have you attended a <em>Star Trek</em> convention?</h2>
+<p>No, I have not. But I thought it would be a fun binary variable.</p>
+<h1>References</h1>
+<p>I could not have done this without the help of many different sources.</p>
+<ul>
+<li>http://luna.cas.usf.edu/~mbrannic/files/regression/Logistic.html - the first thing I read, and the primary source for the explanation of logistic regression in the first section (<em>What in Merlin's beard is logistic regression?</em>). Highly recommended introduction to logistic regression.</li>
+<li>http://en.wikipedia.org/wiki/Logistic_regression - Wikipedia is a great place to start, but it dove into the technical aspects a little too quickly for my taste.</li>
+<li>http://www.statgun.com/tutorials/logistic-regression.html - a great explanation of logistic regression in general.</li>
+<li>http://ww2.coastal.edu/kingw/statistics/R-tutorials/logistic.html - used R to explain logistic regression of a particular dataset.</li>
+<li>http://www.omidrouhani.com/research/logisticregression/html/logisticregression.htm - mathematical derivation of logistic regression</li>
+<li>http://ww2.coastal.edu/kingw/statistics/R-tutorials/logistic.html - explains logistic regression and odds, and implements logistic regression on a particular dataset.</li>
+</ul>
+            <a href="#" class="go-top">Go Top</a>
+<footer class="footer">
+    <p>&copy; Olga Botvinnik &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure-single">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+    </div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+
+</body>
+</html>

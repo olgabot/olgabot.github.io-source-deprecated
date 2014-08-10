@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Science, meet productivity, ">
+
+
+        <title>prettyplotlib: Painlessly create beautiful matplotlib plots // Science, meet productivity // </title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../theme/css/pure.css">
+    <link rel="stylesheet" href="../../../../../theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="pure-g-r" id="layout">
+        <div class="sidebar pure-u">
+            <div class="cover-img" style="background-image: url('')">
+                <div class="cover-body">
+                    <header class="header">
+                        <hgroup>
+                            <h1 class="brand-main"><a href="/">Science, meet productivity</a></h1>
+                            <p class="tagline"></p>
+                                <p class="social">
+                                    <a href="#">
+                                        <i class="fa fa-You can add links in your config file fa-3x"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-Another social link fa-3x"></i>
+                                    </a>
+                                <p>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>prettyplotlib: Painlessly create beautiful matplotlib plots</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="../../../../../tag/python.html">python</a>
+                                <a class="post-category" href="../../../../../tag/matplotlib.html">matplotlib</a>
+                                <a class="post-category" href="../../../../../tag/prettyplotlib.html">prettyplotlib</a>
+                                <a class="post-category" href="../../../../../tag/programming.html">programming</a>
+                                <a class="post-category" href="../../../../../tag/data-visualization.html">data visualization</a>
+                                <a class="post-category" href="../../../../../tag/dataviz.html">dataviz</a>
+                        </p>
+                </header>
+            </section>
+            <p>A while back I wrote a few tutorials about how to work with Python's plotting library, <code>matplotlib</code>, so that it behaves nicely and produces beautiful plots. Well, I got tired of tweaking every single figure individually so I wrote this library, <a href="http://olgabot.github.io/prettyplotlib"><code>prettyplotlib</code></a> to have pretty default plots in Python's <code>matplotlib</code>. </p>
+<p>I truly believe that poor visualizations obstruct scientific progress, and this is my contribution.</p>
+<p>A couple motivating examples are below, but if you just want an overview, check out the <a href="https://github.com/olgabot/prettyplotlib/wiki/Comparison-to-matplotlib">Comparison to matplotlib defaults</a>, <a href="https://github.com/olgabot/prettyplotlib/wiki/Gallery">Examples Gallery</a>,  and <a href="https://github.com/olgabot/prettyplotlib/wiki/Examples-with-code">Examples with code</a> on Github.</p>
+<p>To install, do the usual <code>pip install</code> stuff:</p>
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">prettyplotlib</span>
+</pre></div>
+
+
+<p>I truly hope you enjoy using this library! If you have any comments or suggestions, let me know!</p>
+<h1><code>prettyplotlib.scatter</code></h1>
+<p>The default <code>matplotlib</code> color cycle is not pretty to look at. What's even worse is
+that if you just do a <code>scatter</code> plot, then it doesn't cycle at all through any values</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">plt</span>
+<span class="cp"># Set the random seed for consistency</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="cp"># Show the whole color range</span>
+<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="err">&#39;</span><span class="n">prettyplotlib</span> <span class="err">`</span><span class="n">scatter</span><span class="err">`</span> <span class="n">example</span><span class="err">\</span><span class="n">nshowing</span> <span class="k">default</span> <span class="n">matplotlib</span> <span class="err">`</span><span class="n">scatter</span><span class="err">`&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">scatter_matplotlib_default</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib default scatterplot" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/scatter_matplotlib_default.png" /></p>
+<h2>Before <code>prettyplotlib</code>: how to make nice plots</h2>
+<p>Now I'm going to take you through ALL the steps I used to take to make nice
+looking plots.</p>
+<p>First, change the colors with <code>brewer2mpl</code>:</p>
+<div class="highlight"><pre><span class="cp"># Get &quot;Set2&quot; colors from ColorBrewer (all colorbrewer scales: http:</span><span class="c1">//bl.ocks.org/mbostock/5577023)</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="n">brewer2mpl</span><span class="p">.</span><span class="n">get_map</span><span class="p">(</span><span class="err">&#39;</span><span class="n">Set2</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">qualitative</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">).</span><span class="n">mpl_colors</span>
+<span class="p">...</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">set2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The full code is,</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">plt</span>
+<span class="n">import</span> <span class="n">brewer2mpl</span>
+
+<span class="cp"># Get &quot;Set2&quot; colors from ColorBrewer (all colorbrewer scales: http:</span><span class="c1">//bl.ocks.org/mbostock/5577023)</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="n">brewer2mpl</span><span class="p">.</span><span class="n">get_map</span><span class="p">(</span><span class="err">&#39;</span><span class="n">Set2</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">qualitative</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">).</span><span class="n">mpl_colors</span>
+
+<span class="cp"># Set the random seed for consistency</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="cp"># Show the whole color range</span>
+<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">set2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">scatter_matplotlib_improved_01_changed_colors</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib scatter improved 01: changed colors" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/scatter_matplotlib_improved_01_changed_colors.png" /></p>
+<p>This looks nice, almost like an impressionist painting, but it's still hard to
+see overlaps here. So let's fill the symbols with <code>0.5</code> opacity using
+<code>alpha=0.5</code>.</p>
+<div class="highlight"><pre><span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The full code is,</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">plt</span>
+<span class="n">import</span> <span class="n">brewer2mpl</span>
+
+<span class="cp"># Get &quot;Set2&quot; colors from ColorBrewer (all colorbrewer scales: http:</span><span class="c1">//bl.ocks.org/mbostock/5577023)</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="n">brewer2mpl</span><span class="p">.</span><span class="n">get_map</span><span class="p">(</span><span class="err">&#39;</span><span class="n">Set2</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">qualitative</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">).</span><span class="n">mpl_colors</span>
+
+<span class="cp"># Set the random seed for consistency</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="cp"># Show the whole color range</span>
+<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">set2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">scatter_matplotlib_improved_02_added_alpha</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib scatter improved 02: added alpha" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/scatter_matplotlib_improved_02_added_alpha.png" /></p>
+<p>This is still pretty lovely and impressionist-y but I still didn't like that it
+was hard to see when the dots overlapped. So let's add a black outline, and
+specify that <code>color</code> is just the <code>facecolor</code>:</p>
+<div class="highlight"><pre><span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="err">&#39;</span><span class="n">black</span><span class="err">&#39;</span><span class="p">,</span>
+<span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The full code is,</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">plt</span>
+<span class="n">import</span> <span class="n">brewer2mpl</span>
+
+<span class="cp"># Get &quot;Set2&quot; colors from ColorBrewer (all colorbrewer scales: http:</span><span class="c1">//bl.ocks.org/mbostock/5577023)</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="n">brewer2mpl</span><span class="p">.</span><span class="n">get_map</span><span class="p">(</span><span class="err">&#39;</span><span class="n">Set2</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">qualitative</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">).</span><span class="n">mpl_colors</span>
+
+<span class="cp"># Set the random seed for consistency</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="cp"># Show the whole color range</span>
+<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">set2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="err">&#39;</span><span class="n">black</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">scatter_matplotlib_improved_03_added_outline</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib scatter improved 03: added black outline" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/scatter_matplotlib_improved_03_added_outline.png" /></p>
+<p>Ack, but those lines are too thick ... let's think them down to <code>linewidth=0.15</code></p>
+<div class="highlight"><pre><span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="err">&#39;</span><span class="n">black</span><span class="err">&#39;</span><span class="p">,</span>
+<span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The full code is,</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">plt</span>
+<span class="n">import</span> <span class="n">brewer2mpl</span>
+
+<span class="cp"># Get &quot;Set2&quot; colors from ColorBrewer (all colorbrewer scales: http:</span><span class="c1">//bl.ocks.org/mbostock/5577023)</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="n">brewer2mpl</span><span class="p">.</span><span class="n">get_map</span><span class="p">(</span><span class="err">&#39;</span><span class="n">Set2</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">qualitative</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">).</span><span class="n">mpl_colors</span>
+
+<span class="cp"># Set the random seed for consistency</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="cp"># Show the whole color range</span>
+<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">set2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="err">&#39;</span><span class="n">black</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">scatter_matplotlib_improved_04_thinned_outline</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib scatter improved 04: thinned out black outline" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/scatter_matplotlib_improved_04_thinned_outline.png" /></p>
+<p><em>Now</em> we're getting somewhere. This looks very lovely. Don't you want to just
+cuddle up with that cute plot?</p>
+<p>What are those top and right axes lines really doing for us? They're boxing the
+data in, but we can do that with our eyes from the other axis lines. So let's
+remove the top and right axis lines using <code>ax.spines</code>:</p>
+<div class="highlight"><pre><span class="cp"># Remove top and right axes lines (&quot;spines&quot;)</span>
+<span class="n">spines_to_remove</span> <span class="o">=</span> <span class="p">[</span><span class="err">&#39;</span><span class="n">top</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">right</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="n">in</span> <span class="n">spines_to_remove</span><span class="o">:</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="n">False</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The full code is,</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">plt</span>
+<span class="n">import</span> <span class="n">brewer2mpl</span>
+
+<span class="cp"># Get &quot;Set2&quot; colors from ColorBrewer (all colorbrewer scales: http:</span><span class="c1">//bl.ocks.org/mbostock/5577023)</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="n">brewer2mpl</span><span class="p">.</span><span class="n">get_map</span><span class="p">(</span><span class="err">&#39;</span><span class="n">Set2</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">qualitative</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">).</span><span class="n">mpl_colors</span>
+
+<span class="cp"># Set the random seed for consistency</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="cp"># Show the whole color range</span>
+<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">set2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="err">&#39;</span><span class="n">black</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+
+<span class="cp"># Remove top and right axes lines (&quot;spines&quot;)</span>
+<span class="n">spines_to_remove</span> <span class="o">=</span> <span class="p">[</span><span class="err">&#39;</span><span class="n">top</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">right</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="n">in</span> <span class="n">spines_to_remove</span><span class="o">:</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="n">False</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">scatter_matplotlib_improved_05_removed_top_right_spines</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib scatter improved 05: removed top and right axis lines" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/scatter_matplotlib_improved_05_removed_top_right_spines.png" /></p>
+<p>Oops, but we still have the ticks on the top and right axes. We'll need to get
+rid of them. Actually, why don't we just get rid of all ticks altogether? We can
+tell by the position of the number where it indicates, so we don't need an
+additional tick.</p>
+<div class="highlight"><pre><span class="cp"># Get rid of ticks. The position of the numbers is informative enough of</span>
+<span class="cp"># the position of the value.</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="err">&#39;</span><span class="n">none</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="err">&#39;</span><span class="n">none</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Here's the full code:</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">plt</span>
+<span class="n">import</span> <span class="n">brewer2mpl</span>
+
+<span class="cp"># Get &quot;Set2&quot; colors from ColorBrewer (all colorbrewer scales: http:</span><span class="c1">//bl.ocks.org/mbostock/5577023)</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="n">brewer2mpl</span><span class="p">.</span><span class="n">get_map</span><span class="p">(</span><span class="err">&#39;</span><span class="n">Set2</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">qualitative</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">).</span><span class="n">mpl_colors</span>
+
+<span class="cp"># Set the random seed for consistency</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="cp"># Show the whole color range</span>
+<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">set2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="err">&#39;</span><span class="n">black</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+
+<span class="cp"># Remove top and right axes lines (&quot;spines&quot;)</span>
+<span class="n">spines_to_remove</span> <span class="o">=</span> <span class="p">[</span><span class="err">&#39;</span><span class="n">top</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">right</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="n">in</span> <span class="n">spines_to_remove</span><span class="o">:</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="n">False</span><span class="p">)</span>
+
+<span class="cp"># Get rid of ticks. The position of the numbers is informative enough of</span>
+<span class="cp"># the position of the value.</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="err">&#39;</span><span class="n">none</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="err">&#39;</span><span class="n">none</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">scatter_matplotlib_improved_06_removed_ticks</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib scatter improved 06: removed tick marks" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/scatter_matplotlib_improved_06_removed_ticks.png" /></p>
+<p>Ahh, much better. But we won't stop there. Now we'll tweak the remaining pieces
+of the figure. For the rest of the spines, let's thin the line down to <code>0.5</code>
+points instead of the default <code>1.0</code> points. Also, we'll change it from pure
+black to a slightly lighter dark grey. Here they are side by side:</p>
+<div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">set_axis_bgcolor</span><span class="p">(</span><span class="err">&#39;</span><span class="n">black</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">black</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="err">&#39;</span><span class="n">white</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="err">&#39;</span><span class="n">center</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="err">&#39;</span><span class="n">center</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">set_axis_bgcolor</span><span class="p">(</span><span class="err">&#39;#</span><span class="mi">262626</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">almost</span> <span class="n">black</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="err">&#39;</span><span class="n">white</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="err">&#39;</span><span class="n">center</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="err">&#39;</span><span class="n">center</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">black_vs_almost_black</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib scatter improved 06: removed tick marks" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/black_vs_almost_black.png" /></p>
+<p>So not a <em>huge</em> difference, and the dark grey still looks pretty black, but it's
+<a href="http://ianstormtaylor.com/design-tip-never-use-black/">a little more pleasant on the eyes</a> to use a dark grey instead of black. There's very few things in
+nature that are truly black. Just look at shadows! They're just dark grey, or
+blue, or red or purple. But I digress. Back to plotting libraries...</p>
+<p>To change the x-axis and y-axis line colors, and the outlines of the scatter
+symbols from black to dark grey, we'll do:</p>
+<div class="highlight"><pre><span class="cp"># For remaining spines, thin out their line and change the black to a slightly off-black dark grey</span>
+<span class="n">almost_black</span> <span class="o">=</span> <span class="err">&#39;#</span><span class="mi">262626</span><span class="err">&#39;</span>
+<span class="p">...</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="err">&#39;</span><span class="n">black</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span><span class="err">`</span>
+<span class="p">...</span>
+<span class="n">spines_to_keep</span> <span class="o">=</span> <span class="p">[</span><span class="err">&#39;</span><span class="n">bottom</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">left</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="n">in</span> <span class="n">spines_to_keep</span><span class="o">:</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The full code is,</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">plt</span>
+<span class="n">import</span> <span class="n">brewer2mpl</span>
+
+<span class="cp"># Get &quot;Set2&quot; colors from ColorBrewer (all colorbrewer scales: http:</span><span class="c1">//bl.ocks.org/mbostock/5577023)</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="n">brewer2mpl</span><span class="p">.</span><span class="n">get_map</span><span class="p">(</span><span class="err">&#39;</span><span class="n">Set2</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">qualitative</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">).</span><span class="n">mpl_colors</span>
+
+<span class="cp"># Set the random seed for consistency</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="cp"># Save a nice dark grey as a variable</span>
+<span class="n">almost_black</span> <span class="o">=</span> <span class="err">&#39;#</span><span class="mi">262626</span><span class="err">&#39;</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="cp"># Show the whole color range</span>
+<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">set2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="n">almost_black</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+
+<span class="cp"># Remove top and right axes lines (&quot;spines&quot;)</span>
+<span class="n">spines_to_remove</span> <span class="o">=</span> <span class="p">[</span><span class="err">&#39;</span><span class="n">top</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">right</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="n">in</span> <span class="n">spines_to_remove</span><span class="o">:</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="n">False</span><span class="p">)</span>
+
+<span class="cp"># Get rid of ticks. The position of the numbers is informative enough of</span>
+<span class="cp"># the position of the value.</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="err">&#39;</span><span class="n">none</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="err">&#39;</span><span class="n">none</span><span class="err">&#39;</span><span class="p">)</span>
+
+<span class="cp"># For remaining spines, thin out their line and change the black to a slightly off-black dark grey</span>
+<span class="n">spines_to_keep</span> <span class="o">=</span> <span class="p">[</span><span class="err">&#39;</span><span class="n">bottom</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">left</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="n">in</span> <span class="n">spines_to_keep</span><span class="o">:</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">scatter_matplotlib_improved_07_axis_black_to_almost_black</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib scatter improved 07: changed axis lines from black to almost black" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/scatter_matplotlib_improved_07_axis_black_to_almost_black.png" /></p>
+<p>This is nice. But if you look closely, the tick labels are still black :(  We
+have to change them separately, using</p>
+<div class="highlight"><pre><span class="cp"># Change the labels to the off-black</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+</pre></div>
+
+
+<p>And while we're at it, let's add a title and make it dark grey too.</p>
+<div class="highlight"><pre><span class="cp"># Change the axis title to off-black</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">title</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="err">&#39;</span><span class="n">prettyplotlib</span> <span class="err">`</span><span class="n">scatter</span><span class="err">`</span> <span class="n">example</span><span class="err">\</span><span class="n">nshowing</span> <span class="n">improved</span> <span class="n">matplotlib</span> <span class="err">`</span><span class="n">scatter</span><span class="err">`&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The full code is,</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">plt</span>
+<span class="n">import</span> <span class="n">brewer2mpl</span>
+
+<span class="cp"># Get &quot;Set2&quot; colors from ColorBrewer (all colorbrewer scales: http:</span><span class="c1">//bl.ocks.org/mbostock/5577023)</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="n">brewer2mpl</span><span class="p">.</span><span class="n">get_map</span><span class="p">(</span><span class="err">&#39;</span><span class="n">Set2</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">qualitative</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">).</span><span class="n">mpl_colors</span>
+
+<span class="cp"># Set the random seed for consistency</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="cp"># Save a nice dark grey as a variable</span>
+<span class="n">almost_black</span> <span class="o">=</span> <span class="err">&#39;#</span><span class="mi">262626</span><span class="err">&#39;</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="cp"># Show the whole color range</span>
+<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">set2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="n">almost_black</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+
+<span class="cp"># Remove top and right axes lines (&quot;spines&quot;)</span>
+<span class="n">spines_to_remove</span> <span class="o">=</span> <span class="p">[</span><span class="err">&#39;</span><span class="n">top</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">right</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="n">in</span> <span class="n">spines_to_remove</span><span class="o">:</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="n">False</span><span class="p">)</span>
+
+<span class="cp"># Get rid of ticks. The position of the numbers is informative enough of</span>
+<span class="cp"># the position of the value.</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="err">&#39;</span><span class="n">none</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="err">&#39;</span><span class="n">none</span><span class="err">&#39;</span><span class="p">)</span>
+
+<span class="cp"># For remaining spines, thin out their line and change the black to a slightly off-black dark grey</span>
+<span class="n">spines_to_keep</span> <span class="o">=</span> <span class="p">[</span><span class="err">&#39;</span><span class="n">bottom</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">left</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="n">in</span> <span class="n">spines_to_keep</span><span class="o">:</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+
+<span class="cp"># Change the labels to the off-black</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+
+<span class="cp"># Change the axis title to off-black</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">title</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="err">&#39;</span><span class="n">prettyplotlib</span> <span class="err">`</span><span class="n">scatter</span><span class="err">`</span> <span class="n">example</span><span class="err">\</span><span class="n">nshowing</span> <span class="n">improved</span> <span class="n">matplotlib</span> <span class="err">`</span><span class="n">scatter</span><span class="err">`&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">scatter_matplotlib_improved_08_labels_black_to_almost_black</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib scatter improved 08: changed labels to almost black" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/scatter_matplotlib_improved_08_labels_black_to_almost_black.png" /></p>
+<p>If you remember in the original example, we also had an axis legend, using</p>
+<div class="highlight"><pre><span class="n">ax</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+
+<p>So let's add it to this code, too.</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">plt</span>
+<span class="n">import</span> <span class="n">brewer2mpl</span>
+
+<span class="cp"># Get &quot;Set2&quot; colors from ColorBrewer (all colorbrewer scales: http:</span><span class="c1">//bl.ocks.org/mbostock/5577023)</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="n">brewer2mpl</span><span class="p">.</span><span class="n">get_map</span><span class="p">(</span><span class="err">&#39;</span><span class="n">Set2</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">qualitative</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">).</span><span class="n">mpl_colors</span>
+
+<span class="cp"># Set the random seed for consistency</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="cp"># Save a nice dark grey as a variable</span>
+<span class="n">almost_black</span> <span class="o">=</span> <span class="err">&#39;#</span><span class="mi">262626</span><span class="err">&#39;</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="cp"># Show the whole color range</span>
+<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">set2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="n">almost_black</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+
+<span class="cp"># Remove top and right axes lines (&quot;spines&quot;)</span>
+<span class="n">spines_to_remove</span> <span class="o">=</span> <span class="p">[</span><span class="err">&#39;</span><span class="n">top</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">right</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="n">in</span> <span class="n">spines_to_remove</span><span class="o">:</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="n">False</span><span class="p">)</span>
+
+<span class="cp"># Get rid of ticks. The position of the numbers is informative enough of</span>
+<span class="cp"># the position of the value.</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="err">&#39;</span><span class="n">none</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="err">&#39;</span><span class="n">none</span><span class="err">&#39;</span><span class="p">)</span>
+
+<span class="cp"># For remaining spines, thin out their line and change the black to a slightly off-black dark grey</span>
+<span class="n">almost_black</span> <span class="o">=</span> <span class="err">&#39;#</span><span class="mi">262626</span><span class="err">&#39;</span>
+<span class="n">spines_to_keep</span> <span class="o">=</span> <span class="p">[</span><span class="err">&#39;</span><span class="n">bottom</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">left</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="n">in</span> <span class="n">spines_to_keep</span><span class="o">:</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+
+<span class="cp"># Change the labels to the off-black</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+
+<span class="cp"># Change the axis title to off-black</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">title</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="err">&#39;</span><span class="n">prettyplotlib</span> <span class="err">`</span><span class="n">scatter</span><span class="err">`</span> <span class="n">example</span><span class="err">\</span><span class="n">nshowing</span> <span class="n">improved</span> <span class="n">matplotlib</span> <span class="err">`</span><span class="n">scatter</span><span class="err">`&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">scatter_matplotlib_improved_09_ugly_legend</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib scatter improved 09: added ugly legend" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/scatter_matplotlib_improved_09_ugly_legend.png" /></p>
+<p>There are many things I don't like about this legend.</p>
+<ol>
+<li>First of all, why does it have such a thick border line? What does that
+really add to our interpretation of the legend? The black line is so thick that
+it distracts from what we're trying to portray - which label goes with which
+color.</li>
+<li>Why does it show three points? Does this legend think I'm dumb and can't
+figure out which symbol goes with which label after one iteration, so it does it
+three times?</li>
+<li>Finally, the legend labels are pure black. Maybe you notice it too, after
+comparing to x-axis and y-axis lines and labels.</li>
+</ol>
+<p>We'll accomplish these three things using this code:</p>
+<div class="highlight"><pre><span class="cp"># Remove the line around the legend box, and instead fill it with a light grey</span>
+<span class="cp"># Also only use one point for the scatterplot legend because the user will</span>
+<span class="cp"># get the idea after just one, they don&#39;t need three.</span>
+<span class="n">light_grey</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="kt">float</span><span class="p">(</span><span class="mi">248</span><span class="p">)</span><span class="o">/</span><span class="kt">float</span><span class="p">(</span><span class="mi">255</span><span class="p">)]</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">legend</span> <span class="o">=</span> <span class="n">ax</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="n">True</span><span class="p">,</span> <span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontcolor</span><span class="o">=</span><span class="n">almost_black</span><span class="p">)</span>
+<span class="n">rect</span> <span class="o">=</span> <span class="n">legend</span><span class="p">.</span><span class="n">get_frame</span><span class="p">()</span>
+<span class="n">rect</span><span class="p">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="n">light_grey</span><span class="p">)</span>
+<span class="n">rect</span><span class="p">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="cp"># Change the legend label colors to almost black, too</span>
+<span class="n">texts</span> <span class="o">=</span> <span class="n">legend</span><span class="p">.</span><span class="n">texts</span>
+<span class="k">for</span> <span class="n">t</span> <span class="n">in</span> <span class="n">texts</span><span class="o">:</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Now our code is pretty huge ...</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">plt</span>
+<span class="n">import</span> <span class="n">brewer2mpl</span>
+
+<span class="cp"># Get &quot;Set2&quot; colors from ColorBrewer (all colorbrewer scales: http:</span><span class="c1">//bl.ocks.org/mbostock/5577023)</span>
+<span class="n">set2</span> <span class="o">=</span> <span class="n">brewer2mpl</span><span class="p">.</span><span class="n">get_map</span><span class="p">(</span><span class="err">&#39;</span><span class="n">Set2</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">qualitative</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">).</span><span class="n">mpl_colors</span>
+
+<span class="cp"># Set the random seed for consistency</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="cp"># Save a nice dark grey as a variable</span>
+<span class="n">almost_black</span> <span class="o">=</span> <span class="err">&#39;#</span><span class="mi">262626</span><span class="err">&#39;</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="cp"># Show the whole color range</span>
+<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">set2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="n">almost_black</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+
+<span class="cp"># Remove top and right axes lines (&quot;spines&quot;)</span>
+<span class="n">spines_to_remove</span> <span class="o">=</span> <span class="p">[</span><span class="err">&#39;</span><span class="n">top</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">right</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="n">in</span> <span class="n">spines_to_remove</span><span class="o">:</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="n">False</span><span class="p">)</span>
+
+<span class="cp"># Get rid of ticks. The position of the numbers is informative enough of</span>
+<span class="cp"># the position of the value.</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="err">&#39;</span><span class="n">none</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="err">&#39;</span><span class="n">none</span><span class="err">&#39;</span><span class="p">)</span>
+
+<span class="cp"># For remaining spines, thin out their line and change the black to a slightly off-black dark grey</span>
+<span class="n">almost_black</span> <span class="o">=</span> <span class="err">&#39;#</span><span class="mi">262626</span><span class="err">&#39;</span>
+<span class="n">spines_to_keep</span> <span class="o">=</span> <span class="p">[</span><span class="err">&#39;</span><span class="n">bottom</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">left</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="n">in</span> <span class="n">spines_to_keep</span><span class="o">:</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+
+<span class="cp"># Change the labels to the off-black</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+
+<span class="cp"># Change the axis title to off-black</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">title</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+
+<span class="cp"># Remove the line around the legend box, and instead fill it with a light grey</span>
+<span class="cp"># Also only use one point for the scatterplot legend because the user will </span>
+<span class="cp"># get the idea after just one, they don&#39;t need three.</span>
+<span class="n">light_grey</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="kt">float</span><span class="p">(</span><span class="mi">248</span><span class="p">)</span><span class="o">/</span><span class="kt">float</span><span class="p">(</span><span class="mi">255</span><span class="p">)]</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">legend</span> <span class="o">=</span> <span class="n">ax</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="n">True</span><span class="p">,</span> <span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rect</span> <span class="o">=</span> <span class="n">legend</span><span class="p">.</span><span class="n">get_frame</span><span class="p">()</span>
+<span class="n">rect</span><span class="p">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="n">light_grey</span><span class="p">)</span>
+<span class="n">rect</span><span class="p">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="cp"># Change the legend label colors to almost black, too</span>
+<span class="n">texts</span> <span class="o">=</span> <span class="n">legend</span><span class="p">.</span><span class="n">texts</span>
+<span class="k">for</span> <span class="n">t</span> <span class="n">in</span> <span class="n">texts</span><span class="o">:</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">almost_black</span><span class="p">)</span>
+
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="err">&#39;</span><span class="n">prettyplotlib</span> <span class="err">`</span><span class="n">scatter</span><span class="err">`</span> <span class="n">example</span><span class="err">\</span><span class="n">nshowing</span> <span class="n">improved</span> <span class="n">matplotlib</span> <span class="err">`</span><span class="n">scatter</span><span class="err">`&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">scatter_matplotlib_improved_10_pretty_legend</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib scatter improved 10: beautiful legend" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/scatter_matplotlib_improved_10_pretty_legend.png" /></p>
+<p>Aaaaaaaaaaand I got tired of doing all those steps, EVERY time I wanted to make a simple scatterplot. So I wrote
+<a href="http://github.com/olgabot/prettyplotlib"><code>prettyplotlib</code></a>. Here's an
+illustrative example of how awesome <code>prettyplotlib</code> is, and how it will save
+all the time you spent agonizing over making your <code>matplotlib</code> plots beautiful.</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">prettyplotlib</span> <span class="n">as</span> <span class="n">ppl</span>
+<span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ppl</span><span class="p">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="cp"># Set the random seed for consistency</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="cp"># Show the whole color range</span>
+<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">ppl</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+<span class="n">ppl</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="err">&#39;</span><span class="n">prettyplotlib</span> <span class="err">`</span><span class="n">scatter</span><span class="err">`</span> <span class="n">example</span><span class="err">\</span><span class="n">nshowing</span> <span class="k">default</span> <span class="n">color</span> <span class="n">cycle</span> <span class="n">and</span> <span class="n">scatter</span> <span class="n">params</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">scatter_prettyplotlib_default</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib scatter improved 10: beautiful legend" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/scatter_prettyplotlib_default.png" /></p>
+<p>The only commands that were different from the very first example with
+matplotlib are:</p>
+<div class="highlight"><pre><span class="n">ppl</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="err">&#39;</span><span class="n">none</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>instead of:</p>
+<div class="highlight"><pre><span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+
+
+<p>And a different legend command:</p>
+<div class="highlight"><pre><span class="n">ppl</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+
+
+<p>instead of:</p>
+<div class="highlight"><pre><span class="n">ax</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+
+<p>If you <strong><em>really</em></strong> want to get the original matplotlib style back in
+prettyplotlib, you can do:</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">prettyplotlib</span> <span class="n">as</span> <span class="n">ppl</span>
+
+<span class="cp"># Set the random seed for consistency</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="cp">#mpl.rcParams[&#39;axis.color_cycle&#39;] = [&#39;blue&#39;]</span>
+
+<span class="cp"># Show the whole color range</span>
+<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="err">&#39;</span><span class="n">blue</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="err">&#39;</span><span class="n">black</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="cp"># Get back the top and right axes lines (&quot;spines&quot;)</span>
+<span class="n">spines_to_remove</span> <span class="o">=</span> <span class="p">[</span><span class="err">&#39;</span><span class="n">top</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">right</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="n">in</span> <span class="n">spines_to_remove</span><span class="o">:</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="n">True</span><span class="p">)</span>
+
+<span class="cp"># Get back the ticks. The position of the numbers is informative enough of</span>
+<span class="cp"># the position of the value.</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="err">&#39;</span><span class="n">both</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="err">&#39;</span><span class="n">both</span><span class="err">&#39;</span><span class="p">)</span>
+
+<span class="cp"># For all the spines, make their line thicker and return them to be black</span>
+<span class="n">all_spines</span> <span class="o">=</span> <span class="p">[</span><span class="err">&#39;</span><span class="n">top</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">left</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">bottom</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">right</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="n">in</span> <span class="n">all_spines</span><span class="o">:</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">].</span><span class="n">set_color</span><span class="p">(</span><span class="err">&#39;</span><span class="n">black</span><span class="err">&#39;</span><span class="p">)</span>
+
+<span class="cp"># Change the labels back to black</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">xaxis</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="err">&#39;</span><span class="n">black</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="err">&#39;</span><span class="n">black</span><span class="err">&#39;</span><span class="p">)</span>
+
+<span class="cp"># Change the axis title also back to black</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">title</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="err">&#39;</span><span class="n">black</span><span class="err">&#39;</span><span class="p">)</span>
+
+<span class="cp"># Remove the line around the legend box, and instead fill it with a light grey</span>
+<span class="cp"># Also only use one point for the scatterplot legend because the user will </span>
+<span class="cp"># get the idea after just one, they don&#39;t need three.</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="err">&#39;</span><span class="n">prettyplotlib</span> <span class="err">`</span><span class="n">scatter</span><span class="err">`</span> <span class="n">example</span><span class="err">\</span><span class="n">nrevert</span> <span class="n">everything</span> <span class="n">back</span> <span class="n">to</span> <span class="k">default</span> <span class="n">matplotlib</span> <span class="n">parameters</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">scatter_prettyplotlib_back_to_matplotlib_default</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Prettyplotlib back to matplotlib" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/scatter_prettyplotlib_back_to_matplotlib_default.png" /></p>
+<p>Notice that the default calls of <code>ax.scatter</code> and <code>ax.legend</code> do the usual
+thing. This is important, because for <code>prettyplotlib</code> to work, you'll need to
+use a syntax that's different from the usual <code>matplotlib</code> one:  <code>ppl.scatter(ax,
+x, y...)</code> instead of <code>ax.scatter(x, y, ...)</code></p>
+<h2><code>prettyplotlib.pcolormesh</code>: Improving heatmaps in <code>matplotlib</code></h2>
+<h3>Both positive and negative values</h3>
+<p>The default <code>matplotlib</code> <code>pcolormesh</code> heatmaps use a rainbow colormap, which has
+been known to mislead data visualization. Specifically, <a href="http://www.jwave.vt.edu/~rkri
+z/Projects/create_color_table/color_07.pdf"><em>"the rainbow color map
+is universally inferior to all other color maps"</em></a>. Unfortunately, <code>matplotlib</code> took
+its default colors from MATLAB, and there the default is also rainbow.</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span> <span class="n">as</span> <span class="n">plt</span>
+<span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="cp">#ax.pcolor(np.random.randn((10,10)))</span>
+<span class="cp">#ax.pcolor(np.random.randn(10), np.random.randn(10))</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">ax</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">pcolormesh_matplotlib_default</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib default scatterplot" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/pcolormesh_matplotlib_default.png" /></p>
+<p>Using the same zero-centered randomly distributed gaussian distribution, we can
+plot it using <code>prettyplotlib</code> with a few modifications in syntax:</p>
+<div class="highlight"><pre><span class="n">ppl</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+
+
+<p>You'll notice that the "hot" (large, positive) color is still red, and the
+"cold" (small, negative) color is still blue, but the in between colors are
+gradations of red and blue, so it's easier to tell the difference between
+values.</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">prettyplotlib</span> <span class="n">as</span> <span class="n">ppl</span>
+<span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ppl</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">ppl</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">pcolormesh_prettyplotlib_default</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib default scatterplot" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/pcolormesh_prettyplotlib_default.png" /></p>
+<p>You may have also noticed similar changes as were made in <code>prettyplotlib.scatter</code>,
+where axis lines were removed, and blacks were changed to almost black.</p>
+<h3>Only positive (or negative) values</h3>
+<p>If your data is only positive (or negative), <code>matplotlib</code> does nothing to change
+the color scale. It's still a rainbow, but look at the colorbar, the range is
+different (0 to 1 instead of -2 to +2)</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">prettyplotlib</span> <span class="n">as</span> <span class="n">ppl</span>
+<span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ppl</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">ax</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)))</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">pcolormesh_matplotlib_positive_default</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib default scatterplot" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/pcolormesh_matplotlib_positive_default.png" /></p>
+<p>If your data is only positive or negative, then <code>prettyplotlib</code> will auto-detect
+this and use a single-color colormap. The default for positive data is the
+<code>reds</code> colormap.</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">prettyplotlib</span> <span class="n">as</span> <span class="n">ppl</span>
+<span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ppl</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">ppl</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)))</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">pcolormesh_prettyplotlib_positive</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib default scatterplot" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/pcolormesh_prettyplotlib_positive.png" /></p>
+<p>And the default for negative data is the <code>blues</code> colormap.</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">prettyplotlib</span> <span class="n">as</span> <span class="n">ppl</span>
+<span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ppl</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">ppl</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="p">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)))</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">pcolormesh_prettyplotlib_negative</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib default scatterplot" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/pcolormesh_prettyplotlib_negative.png" /></p>
+<h2>Add x or y tick labels</h2>
+<p>Plus you can add x- and y-ticklabels directly!</p>
+<p>Normally, when you add x- and y-ticklabels on <code>pcolormesh</code> in <code>matplotlib</code>,
+they're not centered on the blocks, and you have to do a lot of annoying work
+just getting a label on each box. You have to specify the xticks explicitly,
+since you want to label each box.</p>
+<div class="highlight"><pre><span class="n">xticks</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">yticks</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">xticklabels</span><span class="o">=</span><span class="n">string</span><span class="p">.</span><span class="n">uppercase</span><span class="p">[</span><span class="o">:</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">yticklabels</span><span class="o">=</span><span class="n">string</span><span class="p">.</span><span class="n">lowercase</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="o">:</span><span class="p">]</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">xticklabels</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">yticks</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">yticklabels</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The full, <code>matplotlib</code> code is:</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">prettyplotlib</span> <span class="n">as</span> <span class="n">ppl</span>
+<span class="n">from</span> <span class="n">prettyplotlib</span> <span class="n">import</span> <span class="n">plt</span>
+<span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
+<span class="n">import</span> <span class="n">string</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">ax</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)))</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="n">xticks</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">yticks</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">xticklabels</span><span class="o">=</span><span class="n">string</span><span class="p">.</span><span class="n">uppercase</span><span class="p">[</span><span class="o">:</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">yticklabels</span><span class="o">=</span><span class="n">string</span><span class="p">.</span><span class="n">lowercase</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="o">:</span><span class="p">]</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">xticklabels</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">yticks</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">yticklabels</span><span class="p">)</span>
+
+
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">pcolormesh_matplotlib_positive_labels</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib default scatterplot" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/pcolormesh_matplotlib_positive_labels.png" /></p>
+<p>But <code>prettyplotlib.pcolormesh</code> assumes that you want the <code>xticklabels</code> and
+<code>yticklabels</code> on each block, and makes it easy to specify.</p>
+<div class="highlight"><pre><span class="n">ppl</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)),</span>
+               <span class="n">xticklabels</span><span class="o">=</span><span class="n">string</span><span class="p">.</span><span class="n">uppercase</span><span class="p">[</span><span class="o">:</span><span class="mi">10</span><span class="p">],</span>
+               <span class="n">yticklabels</span><span class="o">=</span><span class="n">string</span><span class="p">.</span><span class="n">lowercase</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="o">:</span><span class="p">])</span>
+</pre></div>
+
+
+<p>The full <code>prettyplotlib</code> code is,</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">prettyplotlib</span> <span class="n">as</span> <span class="n">ppl</span>
+<span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
+<span class="n">import</span> <span class="n">string</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ppl</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">ppl</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> 
+               <span class="n">xticklabels</span><span class="o">=</span><span class="n">string</span><span class="p">.</span><span class="n">uppercase</span><span class="p">[</span><span class="o">:</span><span class="mi">10</span><span class="p">],</span> 
+               <span class="n">yticklabels</span><span class="o">=</span><span class="n">string</span><span class="p">.</span><span class="n">lowercase</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="o">:</span><span class="p">])</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">pcolormesh_prettyplotlib_labels</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib default scatterplot" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/pcolormesh_prettyplotlib_labels.png" /></p>
+<h3>Custom colormaps</h3>
+<p>Or pick your own colormap! The diverging colormap <code>PRGn</code> or Purple and Green is
+pretty nice. I usually use this website to look up the colormaps: <a href="http://bl.ocks.org/mbostock/5577023">Every
+Colorbrewer Scale</a> (hover over the colors to get the name of the colormap)</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">prettyplotlib</span> <span class="n">as</span> <span class="n">ppl</span>
+<span class="n">import</span> <span class="n">brewer2mpl</span>
+<span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
+<span class="n">import</span> <span class="n">string</span>
+
+<span class="n">green_purple</span> <span class="o">=</span> <span class="n">brewer2mpl</span><span class="p">.</span><span class="n">get_map</span><span class="p">(</span><span class="err">&#39;</span><span class="n">PRGn</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">diverging</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">11</span><span class="p">).</span><span class="n">mpl_colormap</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ppl</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">ppl</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> 
+               <span class="n">xticklabels</span><span class="o">=</span><span class="n">string</span><span class="p">.</span><span class="n">uppercase</span><span class="p">[</span><span class="o">:</span><span class="mi">10</span><span class="p">],</span> 
+               <span class="n">yticklabels</span><span class="o">=</span><span class="n">string</span><span class="p">.</span><span class="n">lowercase</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="o">:</span><span class="p">],</span>
+               <span class="n">cmap</span><span class="o">=</span><span class="n">green_purple</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">pcolormesh_prettyplotlib_labels_other_cmap_diverging</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib default scatterplot" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/pcolormesh_prettyplotlib_labels_other_cmap_diverging.png" /></p>
+<p>Or if you want your own colormap for positive-only data:</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">prettyplotlib</span> <span class="n">as</span> <span class="n">ppl</span>
+<span class="n">import</span> <span class="n">brewer2mpl</span>
+<span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
+<span class="n">import</span> <span class="n">string</span>
+
+<span class="n">red_purple</span> <span class="o">=</span> <span class="n">brewer2mpl</span><span class="p">.</span><span class="n">get_map</span><span class="p">(</span><span class="err">&#39;</span><span class="n">RdPu</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">Sequential</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">).</span><span class="n">mpl_colormap</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ppl</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">ppl</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)),</span>
+               <span class="n">xticklabels</span><span class="o">=</span><span class="n">string</span><span class="p">.</span><span class="n">uppercase</span><span class="p">[</span><span class="o">:</span><span class="mi">10</span><span class="p">],</span> 
+               <span class="n">yticklabels</span><span class="o">=</span><span class="n">string</span><span class="p">.</span><span class="n">lowercase</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="o">:</span><span class="p">],</span>
+               <span class="n">cmap</span><span class="o">=</span><span class="n">red_purple</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">pcolormesh_prettyplotlib_labels_other_cmap_sequential</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Matplotlib default scatterplot" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/pcolormesh_prettyplotlib_labels_other_cmap_sequential.png" /></p>
+<h3>Log normalization or other parameters</h3>
+<p>Plus, this will take the usual parameters of <code>pcolormesh</code> like if you want to
+rescale your data to log-scale:</p>
+<div class="highlight"><pre><span class="n">from</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">colors</span> <span class="n">import</span> <span class="n">LogNorm</span>
+<span class="p">...</span>
+<span class="n">ppl</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(...,</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">x</span><span class="p">.</span><span class="n">min</span><span class="p">().</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">x</span><span class="p">.</span><span class="n">max</span><span class="p">().</span><span class="n">max</span><span class="p">()))</span>
+</pre></div>
+
+
+<p>The full <code>prettyplotlib</code> code is,</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">prettyplotlib</span> <span class="n">as</span> <span class="n">ppl</span>
+<span class="n">import</span> <span class="n">brewer2mpl</span>
+<span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
+<span class="n">import</span> <span class="n">string</span>
+<span class="n">from</span> <span class="n">matplotlib</span><span class="p">.</span><span class="n">colors</span> <span class="n">import</span> <span class="n">LogNorm</span>
+
+<span class="n">red_purple</span> <span class="o">=</span> <span class="n">brewer2mpl</span><span class="p">.</span><span class="n">get_map</span><span class="p">(</span><span class="err">&#39;</span><span class="n">RdPu</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">Sequential</span><span class="err">&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">).</span><span class="n">mpl_colormap</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ppl</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ppl</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span>
+               <span class="n">xticklabels</span><span class="o">=</span><span class="n">string</span><span class="p">.</span><span class="n">uppercase</span><span class="p">[</span><span class="o">:</span><span class="mi">10</span><span class="p">],</span> 
+               <span class="n">yticklabels</span><span class="o">=</span><span class="n">string</span><span class="p">.</span><span class="n">lowercase</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="o">:</span><span class="p">],</span>
+               <span class="n">cmap</span><span class="o">=</span><span class="n">red_purple</span><span class="p">,</span> 
+               <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">x</span><span class="p">.</span><span class="n">min</span><span class="p">().</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">x</span><span class="p">.</span><span class="n">max</span><span class="p">().</span><span class="n">max</span><span class="p">()))</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">savefig</span><span class="p">(</span><span class="err">&#39;</span><span class="n">pcolormesh_prettyplotlib_labels_lognorm</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Log-normalized heatmap" src="https://raw.github.com/olgabot/prettyplotlib/master/ipython_notebooks/pcolormesh_prettyplotlib_labels_lognorm.png" /></p>
+<p>And now you can easily make beautiful heatmaps!</p>
+<h2>That's all, folks!</h2>
+<p>That's my introduction to <code>prettyplotlib</code> and why you need it. There are similar
+examples for the other functions, but these ones for <code>ppl.scatter</code> and <code>ppl.pcolormesh</code> are the most
+extensive.</p>
+            <a href="#" class="go-top">Go Top</a>
+<footer class="footer">
+    <p>&copy; Olga Botvinnik &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure-single">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+    </div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+
+</body>
+</html>
