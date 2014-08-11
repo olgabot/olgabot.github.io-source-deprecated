@@ -35,7 +35,7 @@ RELATIVE_URLS = True
 
 THEME = "pure-single"
 
-COVER_IMG_URL = "content/images/caterpillar.jpg"
-PROFILE_IMG_URL = "content/images/olga_icon_square.jpg"
-TAGLINE = "Exploring productivity, python, and reproducibility in science"
+COVER_IMG_URL = "https://raw.githubusercontent.com/olgabot/olgabot.github.io-source/master/content/images/waves.jpg"
+PROFILE_IMG_URL = "http://raw.githubusercontent.com/olgabot/olgabot.github.io-source/master/content/images/olga_icon_square.jpg"
+TAGLINE = "A computational RNA biologist exploring productivity, python, and reproducibility in science"
 DISQUS_SITENAME = "sciencemeetproductivity"
