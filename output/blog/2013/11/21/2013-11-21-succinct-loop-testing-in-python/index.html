@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Science, meet productivity, Exploring productivity, python, and reproducibility in science">
+    <meta name="description" content="Science, meet productivity, A computational RNA biologist exploring productivity, python, and reproducibility.">
 
 
-        <title>Succinct loop testing in Python // Science, meet productivity // Exploring productivity, python, and reproducibility in science</title>
+        <title>Succinct loop testing in Python // Science, meet productivity // A computational RNA biologist exploring productivity, python, and reproducibility.</title>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
@@ -31,16 +31,16 @@
                         <hgroup>
                             <img class="avatar" src="http://raw.githubusercontent.com/olgabot/olgabot.github.io-source/master/content/images/olga_icon_square.jpg">
                             <h1 class="brand-main"><a href="/">Science, meet productivity</a></h1>
-                            <p class="tagline">Exploring productivity, python, and reproducibility in science</p>
+                            <p class="tagline">A computational RNA biologist exploring productivity, python, and reproducibility.</p>
                                 <p class="social">
                                     <a href="http://github.com/olgabot">
-                                        <i class="fa fa-github fa-3x"></i>
+                                        <i class="fa fa-github-square fa-3x"></i>
                                     </a>
                                     <a href="http://twitter.com/olgabot">
                                         <i class="fa fa-twitter-square fa-3x"></i>
                                     </a>
                                     <a href="http://www.linkedin.com/in/olgabotvinnik/">
-                                        <i class="fa fa-linkedin fa-3x"></i>
+                                        <i class="fa fa-linkedin-square fa-3x"></i>
                                     </a>
                                 <p>
                         </hgroup>
@@ -52,7 +52,7 @@
         <div class="content">
             <section class="post">
                 <header class="post-header">
-                    <h1>Succinct loop testing in Python</h1>
+                    <h1>Succinct loop testing in&nbsp;Python</h1>
                         <p class="post-meta">
                             // under                                 <a class="post-category" href="../../../../../tag/python.html">python</a>
                                 <a class="post-category" href="../../../../../tag/for-loops.html">for loops</a>
@@ -61,7 +61,7 @@
                         </p>
                 </header>
             </section>
-            <p>Since I'm a data scientist and all, my datasets can be too big to deal with when I'm initially testing an idea. So to test a for loop in Python with just a few examples, I used to do this kind of stuff:</p>
+            <p>Since I&#8217;m a data scientist and all, my datasets can be too big to deal with when I&#8217;m initially testing an idea. So to test a for loop in Python with just a few examples, I used to do this kind of&nbsp;stuff:</p>
 <div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">thing</span> <span class="n">in</span> <span class="n">things</span><span class="o">:</span>
     <span class="n">print</span> <span class="n">thing</span>
@@ -71,15 +71,15 @@
 </pre></div>
 
 
-<p>But python's <code>zip</code> is smart in that it stops when the shortest item in the zip stops!</p>
-<p>So you can do:</p>
+<p>But python&#8217;s <code>zip</code> is smart in that it stops when the shortest item in the zip&nbsp;stops!</p>
+<p>So you can&nbsp;do:</p>
 <div class="highlight"><pre><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">thing</span> <span class="n">in</span> <span class="n">zip</span><span class="p">(</span><span class="n">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">things</span><span class="p">)</span><span class="o">:</span>
 <span class="err"> </span> <span class="err"> </span> <span class="n">print</span> <span class="n">thing</span>
 </pre></div>
 
 
-<p>And it will only show you the first 5 things! And it's so succinct! This is especially pertinent when your <code>things</code> is a generator and you can't necessarily get the <code>len</code> of it.</p>
-<p>Hope that helps you out! It saves me some headache, KeyboardInterrupts, and keystrokes.</p>
+<p>And it will only show you the first 5 things! And it&#8217;s so succinct! This is especially pertinent when your <code>things</code> is a generator and you can&#8217;t necessarily get the <code>len</code> of&nbsp;it.</p>
+<p>Hope that helps you out! It saves me some headache, KeyboardInterrupts, and&nbsp;keystrokes.</p>
             <a href="#" class="go-top">Go Top</a>
     <div class="comments">
         <div id="disqus_thread"></div>

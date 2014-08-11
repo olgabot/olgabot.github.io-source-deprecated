@@ -24,9 +24,9 @@ LINKS =  (('Pythonic Perambulations', 'http://jakevdp.github.io/'),
           ("Jess Hamrick's blog", 'http://www.jesshamrick.com/blog/'),)
 
 # Social widget
-SOCIAL = (('github', 'http://github.com/olgabot'),
+SOCIAL = (('github-square', 'http://github.com/olgabot'),
           ('twitter-square', 'http://twitter.com/olgabot'),
-          ('linkedin', 'http://www.linkedin.com/in/olgabotvinnik/'))
+          ('linkedin-square', 'http://www.linkedin.com/in/olgabotvinnik/'))
 
 DEFAULT_PAGINATION = 10
 
@@ -37,5 +37,7 @@ THEME = "pure-single"
 
 COVER_IMG_URL = "https://raw.githubusercontent.com/olgabot/olgabot.github.io-source/master/content/images/waves.jpg"
 PROFILE_IMG_URL = "http://raw.githubusercontent.com/olgabot/olgabot.github.io-source/master/content/images/olga_icon_square.jpg"
-TAGLINE = "A computational RNA biologist exploring productivity, python, and reproducibility in science"
+TAGLINE = "A computational RNA biologist exploring productivity, python, and reproducibility."
 DISQUS_SITENAME = "sciencemeetproductivity"
+
+TYPOGRIFY = True
