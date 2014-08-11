@@ -7,3 +7,6 @@
 [submodule "pelican-plugins"]
 	path = pelican-plugins
 	url = https://github.com/getpelican/pelican-plugins
+[submodule "olgabot-pure-single"]
+	path = olgabot-pure-single
+	url = https://github.com/olgabot/pure-single

@@ -1,3 +1,9 @@
-[submodule "themes"]
-	path = themes
+[submodule "pelican-themes"]
+	path = pelican-themes
 	url = https://github.com/getpelican/pelican-themes
+[submodule "pure-single"]
+	path = pure-single
+	url = https://github.com/olgabot/pure-single.git
+[submodule "pelican-plugins"]
+	path = pelican-plugins
+	url = https://github.com/getpelican/pelican-plugins
