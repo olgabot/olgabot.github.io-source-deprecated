@@ -19,14 +19,14 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS =  (('Pelican', 'http://getpelican.com/'),
-          ('Python.org', 'http://python.org/'),
-          ('Jinja2', 'http://jinja.pocoo.org/'),
-          ('You can modify those links in your config file', '#'),)
+LINKS =  (('Pythonic Perambulations', 'http://jakevdp.github.io/'),
+          ('Living in an Ivory Basement', 'http://ivory.idyll.org/blog/'),
+          ("Jess Hamrick's blog", 'http://www.jesshamrick.com/blog/'),)
 
 # Social widget
 SOCIAL = (('github', 'http://github.com/olgabot'),
-          ('twitter-square', 'http://twitter.com/olgabot'),)
+          ('twitter-square', 'http://twitter.com/olgabot'),
+          ('linkedin', 'http://www.linkedin.com/in/olgabotvinnik/'))
 
 DEFAULT_PAGINATION = 10
 
