@@ -25,8 +25,8 @@ LINKS =  (('Pelican', 'http://getpelican.com/'),
           ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('github', 'http://github.com/olgabot'),
+          ('twitter-square', 'http://twitter.com/olgabot'),)
 
 DEFAULT_PAGINATION = 10
 
@@ -34,3 +34,8 @@ DEFAULT_PAGINATION = 10
 RELATIVE_URLS = True
 
 THEME = "pure-single"
+
+COVER_IMG_URL = "content/images/caterpillar.jpg"
+PROFILE_IMG_URL = "content/images/olga_icon_square.jpg"
+TAGLINE = "Exploring productivity, python, and reproducibility in science"
+DISQUS_SITENAME = "sciencemeetproductivity"

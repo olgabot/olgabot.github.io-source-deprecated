@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Science, meet productivity, ">
+    <meta name="description" content="Science, meet productivity, Exploring productivity, python, and reproducibility in science">
 
 
-        <title>.bam files --> ??? ---> profit! // Science, meet productivity // </title>
+        <title>.bam files --> ??? ---> profit! // Science, meet productivity // Exploring productivity, python, and reproducibility in science</title>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
@@ -25,18 +25,19 @@
 <body>
     <div class="pure-g-r" id="layout">
         <div class="sidebar pure-u">
-            <div class="cover-img" style="background-image: url('')">
+            <div class="cover-img" style="background-image: url('/Users/olga/Google\ Drive/--\ OlgaSync\ --/hd\ backgrounds/Untitled\ Export/2012Dec30-257.jpg')">
                 <div class="cover-body">
                     <header class="header">
                         <hgroup>
+                            <img class="avatar" src="content/images/olga_icon_square.jpg">
                             <h1 class="brand-main"><a href="/">Science, meet productivity</a></h1>
-                            <p class="tagline"></p>
+                            <p class="tagline">Exploring productivity, python, and reproducibility in science</p>
                                 <p class="social">
-                                    <a href="#">
-                                        <i class="fa fa-You can add links in your config file fa-3x"></i>
+                                    <a href="http://github.com/olgabot">
+                                        <i class="fa fa-github fa-3x"></i>
                                     </a>
-                                    <a href="#">
-                                        <i class="fa fa-Another social link fa-3x"></i>
+                                    <a href="http://twitter.com/olgabot">
+                                        <i class="fa fa-twitter-square fa-3x"></i>
                                     </a>
                                 <p>
                         </hgroup>
@@ -169,6 +170,22 @@ chr9     19000     19999     57.7</pre></div> </div>
 
 <p>This GC content file can be created by converting a <code>.wig</code> (wiggle) format file that&rsquo;s used for a genome browser into a circus format using:</p>  <div class="CodeRay"> <div class="code"><pre>../scripts/wig_to_circos.R hg19_gc1000Base.txt hg19_gc_content.circos</pre></div> </div>   <h2>Number of bunches</h2>  <ul> <li>What: Merges samples of the same group, e.g. <em>untreated</em> into &ldquo;bunches,&rdquo; or mergings of several samples.  <ul> <li>For example, in the example data provided, there are four samples of the LNCaP prostate cancer cell line, and two of the PrEC prostate cancer cell line.</li> <li>In the provided example, two bunches are specified. This means that in addition to calculating the gene counts for <code>LNCaP_1</code>, <code>LNCaP_2</code>, <code>LNCaP_3</code>, <code>LNCaP_4</code>, <code>PrEC_1</code>, <code>PrEC_2</code>, the pipeline will also create  <ul> <li><code>LNCaP_bunch1of2</code>, containing <code>LNCaP_1</code> and <code>LNCaP_2</code></li> <li><code>LNCaP_bunch2of2</code>, containing <code>LNCaP_3</code> and <code>LNCaP_4</code></li> <li><code>PrEC_bunch1of2</code>, containing <code>PrEC_1</code></li> <li><code>PrEC_bunch2of2</code>, containing <code>PrEC_2</code></li> </ul> </li> <li><strong>Why this is useful:</strong> Originally, this pipeline was written for single-cell RNA-Seq analysis and we found that while it is very interesting to look at the genes expressed in a single cell, we saw significantly more signal by merging treatment groups into bunches, and performing differential expression analysis on these bunches.</li> </ul> </li> <li>Used by: Entire pipeline</li> <li>Example: 2</li> </ul>   <p>To change the ordering of samples, change the conditions file, as that is the basis of the bunching order.</p>  <p>If you don&rsquo;t want <strong>any</strong> bunches, omit this variable from the command line.</p>  <h1>Dependencies</h1>  <p>These are programs you must have installed before attempting to run the code. Note: This may seem like a lot, but if you are in biomedical research, it is likely that the servers at your institution already have most of these installed.</p>  <ol> <li><a href="http://www.python.org/getit/releases/2.7/">Python 2.7</a> &ndash; for RSeQC and HTSeq, #2 and #3  <ol> <li><a href="http://www.cython.org/#download">Cython</a> &ndash; required for pybedtools below</li> <li><a href="http://packages.python.org/pybedtools/">pybedtools</a> &ndash; required for HTSeq</li> <li><a href="http://www-huber.embl.de/users/anders/HTSeq/doc/overview.html">HTSeq</a> &ndash; Another method of calculating gene expression counts, in addition to BEDTools Coverage. Installed via python2.7, i.e. instead of typing <code>python setup.py install</code> Say: <code>python2.7 setup.py install</code></li> </ol> </li> <li><a href="http://code.google.com/p/rseqc/downloads/list">RSeQC, Version 2.3 or later</a>, RNA-Sequencing Quality Control software</li> <li><a href="http://code.google.com/p/bedtools/downloads/list">BEDTools</a>, version 2.16.2 or greater</li> <li>Perl 5.8.x or newer (for Circos, #6) Linux and Mac users: <a href="http://www.perl.org/get.html">http://www.perl.org/get.html</a> Windows users: <a href="http://strawberryperl.com/">http://strawberryperl.com/</a></li> <li><a href="http://circos.ca">Circos</a>, version 0.60 or later (for plotting genome coverage data) Note: Circos has a number of Perl package dependencies that take some time to make sure they are all properly installed on your system. <code>http://circos.ca/software/download/circos</code> Aliased such that <code>circos</code> will run the program On my machine, this is accomplished by adding this line to the file in <code>/Users/olgabotvinnik/.bashrc</code>, or my <code>~/.bashrc</code> file: <code>PATH=$PATH:/usr/bin/circos/bin ; export PATH</code> Which means that when you run commands, the computer will know to look in <code>/usr/bin/circos/bin</code> for potential executable files. /usr/bin/circos Is where I personally installed Circos. On the server that I use, for example, it is installed in: <code>/share/apps/circos-0.60/bin</code> So then my <code>~/.bashrc</code> file on the server looks like: <code>PATH=$PATH:/share/apps/circos-0.60/bin ; export PATH</code></li> <li><a href="http://www.r-project.org/">R, 2.14.2 or later</a>  <ol> <li><a href="http://www-huber.embl.de/users/anders/DESeq/">DESeq</a>. For differential expression analysis.</li> <li><a href="http://bioinfo.cipf.es/noiseq/doku.php?id=downloads">NOISeq</a>. Another type of differential expression analysis software. You don&rsquo;t need to download this as it is included in this software, but I figured I should mention it.</li> <li><a href="http://bioconductor.org/packages/release/bioc/html/DEXSeq.html">DEXSeq</a>. Differential exon usage analysis</li> </ol> </li> </ol>   <h1>How to run the example code</h1>  <h2>Before running, make sure you have everything in place</h2>  <p>Before running, make sure you add these to your path: <code>python2.7</code>, <code>BEDTools</code>, <code>SAMTools</code>, <code>RSeQC</code> in <code>python2.7</code>.</p>  <p>For example, for me, these are the locations of these packages on my computer. Add these lines, modified to the locations on your computer, below to your <code>~/.bashrc</code> file and then &ldquo;source&rdquo; it: <code>source ~/.bashrc</code>. FYI: the colon character, &ldquo;:&rdquo; is the delimiter between places to look for binary executables files.</p>  <div class="CodeRay"> <div class="code"><pre>export PATH=/usr/local/bin/python2.7:$PATH export PATH=$PATH:/share/apps/samtools-0.1.18:/share/apps/BEDTools-Version-2.15.0/ export PYTHONPATH=/share/apps/RSeQC/usr/local/lib/python2.7/site-packages:$PYTHONPATH export PATH=/share/apps/RSeQC/usr/local/bin:$PATH</pre></div> </div>   <h2>The example run</h2>  <p>An example run looks like this (yes it is a very long command):</p>  <div class="CodeRay"> <div class="code"><pre>scripts/pipeline.sh test-results test-data/conditions_chr9.tab test-data/hg19_ucsc_genes.gtf test-data/hg19_ucsc_genes_chr9_dexseq.gtf test-data/hg19_ucsc_genes.bed test-data/hg19_id_symbol.txt test-data/human.hg19.genome test-data/karyotype/karyotype.human.hg19.txt test-data/hg19_gene_density_1e5bins.txt test-data/hg19_gc_content_circos_chr9.txt 2</pre></div> </div>   <p>Or, using the keywords we&rsquo;ve discussed:![](http://media.tumblr.com/tumblr_mde7gmsVr81rw6gvj.png)</p>  <div class="CodeRay"> <div class="code"><pre>scripts/pipeline.sh [output directory] [metadata] [.gtf] [dexseq-processed .gtf] [.bed] [transcriptID-symbol] [genome] [karyotype] [gene density] [gc content] [number of bunches]</pre></div> </div></div>
             <a href="#" class="go-top">Go Top</a>
+    <div class="comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = "sciencemeetproductivity"; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
 <footer class="footer">
     <p>&copy; Olga Botvinnik &ndash;
         Built with <a href="https://github.com/PurePelicanTheme/pure-single">Pure Theme</a>
