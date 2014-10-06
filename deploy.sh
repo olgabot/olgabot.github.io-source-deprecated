@@ -17,6 +17,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     #go into directory and copy data we're interested in to that directory
     cd built_website
     rsync -rv --exclude=.git  ../$PELICAN_OUTPUT_FOLDER/* .
+    rsync -rv --exclude=.git ../CNAME .
     #add, commit and push files
     git add -f .
     git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to Github Pages"
