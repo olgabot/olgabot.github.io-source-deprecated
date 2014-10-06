@@ -15,14 +15,14 @@ After the table, I'll discuss advice for each fellowship.
 
 | **Fellowship** | **2011-2012** | **2012-2013** |
 ------------------------ | ----------------------- | ---------------------- |
-| [DOE Computational Science Grad F'ship](http://www.krellinst.org/csgf/) | no award [[16.1MB PDF](https://www.dropbox.com/s/hzea04h10xomfxu/Olga.Botvinnik_DOE.CGSF_2011-2012.pdf)] | no award [[18.5MB PDF](https://www.dropbox.com/s/0py1vwwzed2t63l/Olga.Botvinnik_DOE.CSGF_2012-2013.pdf)] |
-| [Ford Foundation Predoctoral F'ship](http://sites.nationalacademies.org/PGA/FordFellowships/PGA_047958) | | no award [[94KB PDF](https://www.dropbox.com/s/htnj4ordwd1636c/Olga.Botvinnik_Ford_2012-2013_v2.pdf)] |
-| [Hertz Foundation F'ship](http://www.hertzfoundation.org/) | no award [[28.8MB PDF](https://www.dropbox.com/s/a1bvcmtejzz2g76/Olga.Botvinnik_Hertz_2011-2012.pdf)] | **Finalist** [[33.2MB PDF](https://www.dropbox.com/s/6i5bi6l0w1w4cp8/Olga%20Botvinnik_Hertz_2012-2013_v6.pdf)] |
-| [National Defense Sci&amp;Eng Grad F'ship](http://ndseg.asee.org/) | no award [[117KB PDF](https://www.dropbox.com/s/cilqjyevprztbq2/Olga.Botvinnik_NDSEG_2011-2012.pdf)] | **Awarded** [[9.2MB PDF](https://www.dropbox.com/s/pv5tg8we83apa0z/Olga.Botvinnik_NDSEG_2012-2013.pdf)] |
-| [National Physical Science Consortium](http://www.npsc.org/) | | ?? [[10.1MB PDF](https://www.dropbox.com/s/0uoa6wj25g8htte/Olga.Botvinnik_NPSC_NSF-style_2012-2013.pdf?m)] |
-| [NSF Grad Research F'ship](http://www.nsfgrfp.org/) | **Honorable Mention** [[580KB PDF](https://www.dropbox.com/s/bm8c38810lgwyq4/Olga.Botvinnik_NSF_2011-2012.pdf)] |  |
-| [Paul &amp; Daisy Soros F'ship for New Americans](http://www.pdsoros.org/)   | no award [[13.1MB](https://www.dropbox.com/s/1l45r4zm7cah8pb/Olga.Botvinnik_PDSoros_2011-2012.pdf?m)] | no award [[661KB PDF](https://www.dropbox.com/s/cr79a1zb7fkfbs0/Olga.Botvinnik_PDSoros_2012-2013_v7.pdf)]
-| [SMART Scholarship](http://smart.asee.org/) | no award  [[115KB PDF](https://www.dropbox.com/s/hlkzmkxj5bs704d/Olga.Botvinnik_DoD.SMART_2011-2012.pdf)] |  |
+| [DOE Computational Science Grad F'ship](http://www.krellinst.org/csgf/) | no award [[16.1MB PDF](../pdfs/2011/Olga.Botvinnik_DOE.CGSF_2011-2012.pdf)] | no award [[18.5MB PDF](../pdfs/2012/Olga.Botvinnik_DOE.CSGF_2012-2013.pdf)] |
+| [Ford Foundation Predoctoral F'ship](http://sites.nationalacademies.org/PGA/FordFellowships/PGA_047958) | | no award [[94KB PDF](../pdfs/2012/Olga.Botvinnik_Ford_2012-2013.pdf)] |
+| [Hertz Foundation F'ship](http://www.hertzfoundation.org/) | no award [[28.8MB PDF](../pdfs/2011/Olga.Botvinnik_Hertz_2011-2012.pdf)] | **Finalist** [[33.2MB PDF](../pdfs/2012/Olga Botvinnik_Hertz_2012-2013_v6.pdf)] |
+| [National Defense Sci&amp;Eng Grad F'ship](http://ndseg.asee.org/) | no award [[117KB PDF](../pdfs/2011/Olga.Botvinnik_NDSEG_2011-2012.pdf)] | **Awarded** [[9.2MB PDF](../pdfs/2012/Olga.Botvinnik_NDSEG_2012-2013.pdf)] |
+| [National Physical Science Consortium](http://www.npsc.org/) | | ?? [[10.1MB PDF](../pdfs/2012/Olga.Botvinnik_NPSC_NSF-style_2012-2013.pdf)] |
+| [NSF Grad Research F'ship](http://www.nsfgrfp.org/) | **Honorable Mention** [[580KB PDF](../pdfs/2011/Olga.Botvinnik_NSF_2011-2012.pdf)], Ratings Sheet [[28KB PDF](../pdfs/2011/Olga.Botvinnik_NSF_2011-2012_RatingsSheet.pdf)] |  |
+| [Paul &amp; Daisy Soros F'ship for New Americans](http://www.pdsoros.org/)   | no award [[13.1MB](../pdfs/2011/Olga.Botvinnik_PDSoros_2011-2012.pdf)] | no award [[661KB PDF](../pdfs/2012/Olga.Botvinnik_PDSoros_2012-2013_v7.pdf)]
+| [SMART Scholarship](http://smart.asee.org/) | no award  [[115KB PDF](../pdfs/2011/Olga.Botvinnik_DoD.SMART_2011-2012.pdf)] |  |
 
 
 Below are the tips I have for each of these fellowships, but keep in mind that I did not win most of them.
