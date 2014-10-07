@@ -35,9 +35,13 @@ RELATIVE_URLS = True
 
 THEME = "olgabot-pure-single"
 
-COVER_IMG_URL = "https://raw.githubusercontent.com/olgabot/olgabot.github.io-source/master/content/images/waves.jpg"
+COVER_IMG_URL = "https://raw.githubusercontent.com/olgabot/olgabot.github.io-source/master/content/images/ordered_driftwood.jpg"
 PROFILE_IMG_URL = "http://raw.githubusercontent.com/olgabot/olgabot.github.io-source/master/content/images/olga_icon_square.jpg"
 TAGLINE = "A computational RNA biologist exploring productivity, python, and reproducibility."
 DISQUS_SITENAME = "sciencemeetproductivity"
 
 TYPOGRIFY = True
+
+GOOGLE_ANALYTICS = "UA-53680167-1"
+
+MENUITEMS = [('Archive', 'archives.html'), ('About', 'pages/about.html'), ]
