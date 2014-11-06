@@ -10,3 +10,6 @@
 [submodule "olgabot-pure-single"]
 	path = olgabot-pure-single
 	url = https://github.com/olgabot/pure-single
+[submodule "plugins/ipynb"]
+	path = plugins/ipynb
+	url = git://github.com/danielfrg/pelican-ipynb.git

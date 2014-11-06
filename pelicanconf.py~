@@ -19,22 +19,29 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS =  (('Pelican', 'http://getpelican.com/'),
-          ('Python.org', 'http://python.org/'),
-          ('Jinja2', 'http://jinja.pocoo.org/'),
-          ('You can modify those links in your config file', '#'),)
+LINKS =  (('Pythonic Perambulations', 'http://jakevdp.github.io/'),
+          ('Living in an Ivory Basement', 'http://ivory.idyll.org/blog/'),
+          ("Jess Hamrick's blog", 'http://www.jesshamrick.com/blog/'),)
 
 # Social widget
-SOCIAL = (('github', 'http://github.com/olgabot'),
-          ('twitter-square', 'http://twitter.com/olgabot'),)
+SOCIAL = (('github-square', 'http://github.com/olgabot'),
+          ('twitter-square', 'http://twitter.com/olgabot'),
+          ('linkedin-square', 'http://www.linkedin.com/in/olgabotvinnik/'))
 
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-THEME = "pure-single"
+THEME = "olgabot-pure-single"
 
-COVER_IMG_URL = "/Users/olga/Google\ Drive/--\ OlgaSync\ --/hd\ backgrounds/Untitled\ Export/2012Dec30-257.jpg"
-TAGLINE = "Exploring productivity, python, and reproducibility in science"
+COVER_IMG_URL = "https://raw.githubusercontent.com/olgabot/olgabot.github.io-source/master/content/images/ordered_driftwood.jpg"
+PROFILE_IMG_URL = "http://raw.githubusercontent.com/olgabot/olgabot.github.io-source/master/content/images/olga_icon_square.jpg"
+TAGLINE = "A computational RNA biologist exploring productivity, python, and reproducibility."
 DISQUS_SITENAME = "sciencemeetproductivity"
+
+TYPOGRIFY = True
+
+GOOGLE_ANALYTICS = "UA-53680167-1"
+
+MENUITEMS = [('Archive', 'archives.html'), ('About', 'pages/about.html'), ]

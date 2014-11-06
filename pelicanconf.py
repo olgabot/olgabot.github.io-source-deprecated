@@ -45,3 +45,9 @@ TYPOGRIFY = True
 GOOGLE_ANALYTICS = "UA-53680167-1"
 
 MENUITEMS = [('Archive', 'archives.html'), ('About', 'pages/about.html'), ]
+
+# IPython notebook blog posts
+MARKUP = ('md', 'ipynb')
+
+PLUGIN_PATH = './plugins'
+PLUGINS = ['ipynb']
