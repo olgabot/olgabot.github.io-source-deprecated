@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Science, meet productivity, A computational RNA biologist exploring productivity, python, and reproducibility.">
+
+
+        <title>No longer actively developing prettyplotlib // Science, meet productivity // A computational RNA biologist exploring productivity, python, and reproducibility.</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../theme/css/pure.css">
+    <link rel="stylesheet" href="../../../../../theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="pure-g-r" id="layout">
+        <div class="sidebar pure-u">
+            <div class="cover-img" style="background-image: url('https://raw.githubusercontent.com/olgabot/olgabot.github.io-source/master/content/images/ordered_driftwood.jpg')">
+                <div class="cover-body">
+                    <header class="header">
+                        <hgroup>
+                            <img class="avatar" src="http://raw.githubusercontent.com/olgabot/olgabot.github.io-source/master/content/images/olga_icon_square.jpg">
+                            <h1 class="brand-main"><a href="/">Science, meet productivity</a></h1>
+                            <p class="tagline">A computational RNA biologist exploring productivity, python, and reproducibility.</p>
+                                <p class="links"><a href="../../../../../archives.html">Archive</a></p>
+                                <p class="links"><a href="../../../../../pages/about.html">About</a></p>
+                                <p class="social">
+                                    <a href="http://github.com/olgabot">
+                                        <i class="fa fa-github-square fa-3x"></i>
+                                    </a>
+                                    <a href="http://twitter.com/olgabot">
+                                        <i class="fa fa-twitter-square fa-3x"></i>
+                                    </a>
+                                    <a href="http://www.linkedin.com/in/olgabotvinnik/">
+                                        <i class="fa fa-linkedin-square fa-3x"></i>
+                                    </a>
+                                <p>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>No longer actively developing&nbsp;prettyplotlib</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="../../../../../tag/python.html">python</a>
+                                <a class="post-category" href="../../../../../tag/visualization.html">visualization</a>
+                                <a class="post-category" href="../../../../../tag/prettyplotlib.html">prettyplotlib</a>
+                                <a class="post-category" href="../../../../../tag/seaborn.html">seaborn</a>
+                                <a class="post-category" href="../../../../../tag/flotilla.html">flotilla</a>
+                        </p>
+                </header>
+            </section>
+            <p>It is with heavy heart that I announce that I am no longer actively developing <a href="https://github.com/olgabot/prettyplotlib"><code>prettyplotlib</code></a>. It was a fantastic experience to bundle up that piece of code and share it with the world, and discover that there are many other people who want pretty plots. Over the last year, I discovered a much better visualization library in Python called <a href="https://github.com/mwaskom/seaborn"><code>seaborn</code></a>, which is much more mature and covers more ground than <code>prettyplotlib</code> ever could. From working on <a href="https://github.com/mwaskom/seaborn/pull/230">clustered heatmaps</a> on <code>seaborn</code>, I&#8217;ve become a much better Python programmer, and am forever grateful to <a href="https://twitter.com/michaelwaskom">Michael Waskom</a> for creating&nbsp;it.</p>
+<p>Using <code>seaborn</code>, to get the <code>prettyplotlib</code> style,&nbsp;do:</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">seaborn</span> <span class="n">as</span> <span class="n">sns</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="err">&#39;</span><span class="n">ticks</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Set2</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>And to remove &#8220;chartjunk&#8221;,&nbsp;do:</p>
+<div class="highlight"><pre><span class="n">sns</span><span class="p">.</span><span class="n">despine</span><span class="p">()</span>
+</pre></div>
+
+
+<p>If you have discrete pull requests, I will accept them, but I personally will no longer fix&nbsp;bugs.</p>
+<p>Thank you to all the <code>prettyplotlib</code> users, especially <a href="http://www.pgbovine.net/">Phillip Guo</a> for tweeting about it and setting off the publicity storm, and <a href="https://github.com/olgabot/prettyplotlib/graphs/contributors">all the contributors</a> who took my measly code and made it great. I&#8217;ve learned so much from the Python open source community and am so thankful that it is so easy to learn from others in this wonderful&nbsp;environment.</p>
+<p>If you want to check out what I&#8217;ve been working on instead, take a look at <a href="https://github.com/YeoLab/flotilla"><code>flotilla</code></a>, the package I&#8217;ve been working on with <a href="https://github.com/mlovci">Michael Lovci</a> for reproducible single-cell analysis. The package is still in its infancy (read: be prepared for bugs), and we are actively developing&nbsp;it!</p>
+            <a href="#" class="go-top">Go Top</a>
+    <div class="comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = "sciencemeetproductivity"; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+<footer class="footer">
+    <p>&copy; Olga Botvinnik &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure-single">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+    </div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-53680167-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+
+</body>
+</html>

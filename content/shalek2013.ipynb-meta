@@ -1,0 +1,8 @@
+Title: Reproduce figures from single-cell analysis papers: Shalek and Sujita et al, 2013
+Slug: reproduce-figures-from-single-cell-analysis-papers-shalek-and-sujita-et-al-2013
+Date: 2014-11-06 02:48:51
+Tags: science, open science, reproducibility, python flotilla
+Category: science
+Author: Olga Botvinnik
+Lang: en
+Summary: In the interest of reproducibility, and to showcase our new package [`flotilla`](http://github.com/yeolab/flotilla), I've reproduced many figures from the landmark single-cell paper, [Single-cell transcriptomics reveals bimodality in expression and splicing in immune cells](http://www.ncbi.nlm.nih.gov/pubmed/23685454) by Shalek and Sujita, *et al*. *Nature* (2013).

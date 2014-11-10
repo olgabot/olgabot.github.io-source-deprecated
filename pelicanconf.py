@@ -49,5 +49,7 @@ MENUITEMS = [('Archive', 'archives.html'), ('About', 'pages/about.html'), ]
 # IPython notebook blog posts
 MARKUP = ('md', 'ipynb')
 
-PLUGIN_PATHS = ['plugins']
+PLUGIN_PATH = 'plugins'
 PLUGINS = ['ipynb']
+
+IPYNB_STOP_SUMMARY_TAGS = [('div', ('class', 'input')), ('div', ('class', 'output'))]
