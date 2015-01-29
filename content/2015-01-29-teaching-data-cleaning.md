@@ -6,19 +6,11 @@ Category: python
 Author: Olga Botvinnik
 Lang: en
 Summary: 
-	Our compute cluster is down for maintenance, so obviously instead of working on my advancement exam presentation, I'm gonna write a blog post.
-
-	Today I taught a 1-hour lesson on "Cleaning data" for students in UCSD's BIOM262: Quantitative Methods in Genetics class. Here is the [IPython notebook](http://nbviewer.ipython.org/gist/olgabot/edebccd736d051d8a1c7) that I used. While designing the lesson, I used concepts I learned from [Software Carpentry](http://software-carpentry.org/)'s [Training for instrutors](http://teaching.software-carpentry.org/), such as:
-
-	* Designing the lesson incrementally, so every step builds upon itself
-	* When designing a lesson, have the final task in mind and teach to that
-	* Being as clear as possible for each step
-
-	During the workshop, I again implemented things we learned in software carpentry, such as working in pairs and using stickie notes to indicate progress. Overall, I thought it went quite well, with students being engaged for most of the time. Here's the results of what went well and what could be improved.
+	Our compute cluster is down for maintenance, so obviously instead of working on my advancement exam presentation, I'm gonna write a blog post about teaching "data cleaning" to graduate students in UCSD's BIOM 262: "Quantitative Methods in Genetics" class, where I taught [Python](http://www.python.org/), [IPython Notebook](http://ipython.org/), and [pandas](http://pandas.pydata.org/), using [Software Carpentry](http://software-carpentry.org/) techniques for teaching technical skills.
 
 Our compute cluster is down for maintenance, so obviously instead of working on my advancement exam presentation, I'm gonna write a blog post.
 
-Today I taught a 1-hour lesson on "Cleaning data" for students in UCSD's BIOM262: Quantitative Methods in Genetics class. Here is the [IPython notebook](http://nbviewer.ipython.org/gist/olgabot/edebccd736d051d8a1c7) that I used. While designing the lesson, I used concepts I learned from [Software Carpentry](http://software-carpentry.org/)'s [Training for instrutors](http://teaching.software-carpentry.org/), such as:
+Today I taught a 1-hour lesson on "Cleaning data" for graduate students in UCSD's BIOM262: Quantitative Methods in Genetics class. Here is the [IPython notebook](http://nbviewer.ipython.org/gist/olgabot/edebccd736d051d8a1c7) that I used. While designing the lesson, I used concepts I learned from [Software Carpentry](http://software-carpentry.org/)'s [Training for instrutors](http://teaching.software-carpentry.org/), such as:
 
 * Designing the lesson incrementally, so every step builds upon itself
 * When designing a lesson, have the final task in mind and teach to that
