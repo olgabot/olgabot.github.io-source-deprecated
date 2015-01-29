@@ -63,7 +63,7 @@ Here's what the students said they liked.
 
 The instructions for getting set up with downloading an IPython notebook, and having to `cd` and navigate to that directory, and start up an IPython notebook were confusing and need to be rewritten or completely reworked. Maybe give them a `wget` or similar command? Then they'll be directly in that folder where the `.ipynb` was downloaded to, and don't have to do any navigation. This took up a good 15 minutes at the beginning, that could have been used on programming instead.
 
-Windows was a much larger impediment than I thought. The first part of the lesson was performing Unix commands such as `head`, `tail`, `wc`, and searching for a command to count the number of columns in a file (ends up being either `awk` or a combo of `head` and `wc`). I didn't plan for this, or test the lesson on a Windows machine, but half the class was using Windows. So that's definitely something I will plan for in the future.
+Windows was a much larger impediment than I thought. The first part of the lesson was performing Unix commands such as `head`, `tail`, `wc`, and searching for a command to count the number of columns in a file (ends up being either `awk` or a combo of `head` and `wc`). I didn't plan for this, or test the lesson on a Windows machine, but half the class was using Windows. So that's definitely something I will plan for in the future. I felt really bad.
 
 Here's what the students said could be improved.
 
