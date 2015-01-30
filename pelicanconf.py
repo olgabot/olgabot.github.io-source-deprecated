@@ -14,9 +14,9 @@ TIMEZONE = 'America/Los_Angeles'
 DEFAULT_LANG = u'en'
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
+FEED_ALL_ATOM = '/'
+CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
+TRANSLATION_FEED_ATOM = 'feeds/all-%s.atom.xml'
 
 # Blogroll
 LINKS =  (('Pythonic Perambulations', 'http://jakevdp.github.io/'),
@@ -49,7 +49,7 @@ MENUITEMS = [('Archive', 'archives.html'), ('About', 'pages/about.html'), ]
 # IPython notebook blog posts
 MARKUP = ('md', 'ipynb')
 
-PLUGIN_PATH = 'plugins'
+PLUGIN_PATHS = ['plugins']
 PLUGINS = ['ipynb']
 
 IPYNB_STOP_SUMMARY_TAGS = [('div', ('class', 'input')), ('div', ('class', 'output'))]
