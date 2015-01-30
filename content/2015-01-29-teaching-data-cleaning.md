@@ -72,7 +72,7 @@ Here's what the students said could be improved.
 	* It's hard for me not to be the "driver"
 	* Umm, too much feedback?
 	* Hard to find equivalent commands for Windows on my own because I don't know how to parse through other people's tips and know which one will work or not. Not your fault though!
-	* There should be resources and instructinos on how to make this applicable to our own work
+	* There should be resources and instructions on how to make this applicable to our own work
 
 ## The Ugly
 
