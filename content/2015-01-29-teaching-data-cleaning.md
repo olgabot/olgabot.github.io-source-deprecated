@@ -10,7 +10,7 @@ Summary:
 
 Our compute cluster is down for maintenance, so obviously instead of working on my advancement exam presentation, I'm gonna write a blog post.
 
-Today I taught a 1-hour lesson on "Cleaning data" for graduate students in UCSD's BIOM262: Quantitative Methods in Genetics class. Here is the [IPython notebook](http://nbviewer.ipython.org/gist/olgabot/edebccd736d051d8a1c7) that I used. While designing the lesson, I used concepts I learned from [Software Carpentry](http://software-carpentry.org/)'s [Training for instrutors](http://teaching.software-carpentry.org/), such as:
+Today I taught a 1-hour lesson on "Cleaning data" for graduate students in UCSD's BIOM262: Quantitative Methods in Genetics class. Here is the [IPython notebook](http://nbviewer.ipython.org/gist/olgabot/edebccd736d051d8a1c7) that I used. While designing the lesson, I used concepts I learned from [Software Carpentry](http://software-carpentry.org/)'s [Training for instructors](http://teaching.software-carpentry.org/), such as:
 
 * Designing the lesson incrementally, so every step builds upon itself
 * When designing a lesson, have the final task in mind and teach to that
