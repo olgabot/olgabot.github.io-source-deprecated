@@ -52,6 +52,6 @@ MENUITEMS = [('Archive', 'archives.html'), ('About', 'pages/about.html'), ]
 MARKUP = ('md', 'ipynb')
 
 PLUGIN_PATHS = ['plugins/ipynb']
-PLUGINS = ['ipynb']
+# PLUGINS = ['ipynb']
 
 IPYNB_STOP_SUMMARY_TAGS = [('div', ('class', 'input')), ('div', ('class', 'output'))]
