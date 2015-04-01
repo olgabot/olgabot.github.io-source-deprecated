@@ -1,3 +1,4 @@
+jsonschema
 pelican
 Markdown
 fabric
