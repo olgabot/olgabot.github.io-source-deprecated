@@ -4,3 +4,4 @@ Markdown
 fabric
 typogrify
 ipython
+mistune
