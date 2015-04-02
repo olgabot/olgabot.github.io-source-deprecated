@@ -5,7 +5,7 @@ Category: bioinformatics
 Tags: bioinformatics, genomics, ensembl
 Slug: how-to-create-a-custom-genome-fasta-from-a-vcf-file
 Authors: Olga Botvinnik
-Summary: Short version for index and feeds
+Summary: I've tried to create a custom genome for the J. Craig Venter genome several times using `vcf-consensus` and other tools and they have never worked. Finally, I've gotten something to work, and hopefuly this helps you too! This is a log of all the steps I had to take to create a new reference genome. 
 
 I've tried to create a custom genome for the J. Craig Venter genome several times using `vcf-consensus` and other tools and they have never worked. Finally, I've gotten something to work, and hopefuly this helps you too! This is a log of all the steps I had to take to create a new reference genome. This requires a few tools:
 
