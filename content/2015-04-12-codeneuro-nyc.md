@@ -22,19 +22,12 @@ from the outside! Check it out:
 
 [photo of outside]
 
-The conference kicked off with some mingling and beer (Pabst Blue Ribbon aka
-PBR to be specific ... a little too bro-y/hipster-y for me personally so I
-abstained. I *did* tell the organizers I would have appreciated some wine,
-though :).
+(FYI If you want to look through all the tweets from the entire event, check out this [Storify](https://storify.com/yangbodu/codeneuro) board.)
 
-<blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/hashtag/PBR?src=hash">#PBR</a> a plenty <a href="https://twitter.com/CodeNeuro">@CodeNeuro</a> and we&#39;re ready to start! <a href="http://t.co/QpJ3nIYk2J">pic.twitter.com/QpJ3nIYk2J</a></p>&mdash; paco nathan (@pacoid) <a href="https://twitter.com/pacoid/status/586649963133853697">April 10, 2015</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-I only knew three people coming in to the conference, [Nick
+The conference kicked off with some mingling and beer. I gravitated towards the three I knew people coming in to the conference, [Nick
 Sofroniew](http://www.janelia.org/people/scientist/nick-sofroniew), with whom
-I did an [undergrad summer program](http://www.janelia.org/student-programs/undergraduate-program#722) and put me in touch with the conference in the
-first place, [Jeremy Freeman](http://www.jeremyfreeman.net/), who organized
-the whole freakin' thing and invited me to give a talk and tutorial, and [Ben
+I did an [undergrad summer program](http://www.janelia.org/student-programs/undergraduate-program#722) and invited me to talk, [Jeremy Freeman](http://www.jeremyfreeman.net/), the main organizer of
+the whole freakin' thing, and [Ben
 Sussman](https://twitter.com/bensussman), who co-taught the `gitgoing`
 tutorial with me and is an all-around awesome person. But the space was rad,
 we had a balcony and a nice view of the city, and I got to meet a bunch of
@@ -47,15 +40,17 @@ people doing super interesting things in neuroscience.
 
 We got started with the talks, which we had three 10 minute (ish) talks, followed by a half hour (ish) break. It was a nice format that we could chat and break in between the talks not only to get a mental break but also discuss the concepts presented by the previous talks in the context of neuroscience. Here's all the talks:
 
-1. Adam Packer (UCL)
-2. Eiman Azim (Columbia): Using optogenetics to understand interneurons
+1. Adam Packer (UCL): All optical recording and manipulation of individual neurons
+2. Eiman Azim (Columbia): Quantitative behavior and mouse genetics for probing motor circuit function
 3. Randal Burns (Johns Hopkins): Open Connectome project using CATMAID [[github repo](https://github.com/openconnectome/ocpcatmaid)]
 4. Paco Nathan (Databricks): Spark for big data
-5. Eliza Chang (The Data Incubator): 
+5. Eliza Chang (The Data Incubator): PhD to Data Scientist
 6. Michael Dewar (NYT): Real-time analytics on streaming data [[github repo for presentation](https://github.com/mikedewar/codeneuro_streamtools)] | [[github repo for `streamtools` package](https://github.com/nytlabs/streamtools)] 
 7. Hilary Parker (Etsy): Data science at Etsy (+cute statistical plushies!)
 8. Brendan Lake (NYU): Teaching computers to scribble characters like humans
 9. Olga Botvinnik, me! (UCSD): `flotilla`: An open-source Python package for iterative machine learning analyses [[slides](http://nbviewer.ipython.org/format/slides/gist/olgabot/2ee1087d74df46c842df#/)]
+
+As you can imagine from the caliber of all the other talks, I was super nervous for mine! because I'm not doing things at exabyte scale, I'm not doing streaming data, and I'm not even doing neuroscience! I'm just analyzing static datasets with the usual machine learning algorithms. But as Jeremy pointed out, we need better tools for analyzing the existing non-big data datasets that we have, plus I got great questions and feedback from the talk which was great.
 
 My top three favorite talks were:
 
@@ -139,8 +134,62 @@ space, and started off with some kickass bagels and lox/salmon:
 <blockquote class="twitter-tweet" lang="en"><p>breakfast begins <a href="http://t.co/55QljXZqkw">pic.twitter.com/55QljXZqkw</a></p>&mdash; CodeNeuro (@CodeNeuro) <a href="https://twitter.com/CodeNeuro/status/586893786212651008">April 11, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+### `gitgoing` tutorial
+
+Then, Ben Sussman and I taught a tutorial called [gitgoing](https://github.com/CodeNeuro/gitgoing) to quickly teach scientists the version control system [`git`](http://en.wikipedia.org/wiki/Git_%28software%29) and code testing via [`py.test`](http://pytest.org/) and integration systems via [Travis-CI](https://travis-ci.org/). The goal was to get the scientists acquainted with common tools in open source software so that they could contribute themselves. It was kind of like a mini [Software Carpentry](http://software-carpentry.org/) workshop, but we assumed our target audience had some coding experience, and we didn't take the time to explain computer science fundamentals like variables, loops, flow control, etc.
+
+Our class was structured exactly as laid out in the `README.md` file. First we setup their computers so they had `git` and Python 2.7. This took about an hour total to get everyone done. Some people finished faster and started moving on to the `git` section. Then Ben did an awesome explanation of `git`, and I learned a bunch of stuff! I didn't realize that when you `git clone` a repo, you're getting ENTIRE history of the project, so that makes sense why downloading all of [IPython](ipython.org)/[Jupyter](https://jupyter.org/) takes forever. It was also a really helpful analogy to describe the entire repository as an "ocean of code," and that a branch is a single window into that ocean. We also talked about merge conflicts, and how they can be really easy to create if, say someone renamed one of the arguments of a function, and someone else added an argument, and then `git` doesn't know what to do anymore. They picked up on testing pretty quickly, and someone asked "well if `git` thinks it's okay, but how do you know the code will run?" Which brought us directly to testing!
+
+Next, I talked about testing and why it's important. I wrote some simple Python code with functions like `mean_plus_one`, `std_plus_one`, and `cv` (coefficient of variance). They were just slight variations on the true [`numpy`](http://www.numpy.org/) functions so the learners couldn't just use the `numpy` version. We looked at the test file, `test_gitgoing.py` which used `py.test`'s fixtures, which take care of the `setUp` and `tearDown` methods that some other testing frameworks have. We saw a simple example of fixtures, which creates a 20x10 matrix of normally distributed random numbers. These could have been set as integers, I just wanted to illustrate how you can create new fixtures from existing ones.
+
+```python
+import numpy as np
+import pytest
+
+@pytest.fixture
+def n_rows():
+    return 20
+
+@pytest.fixture
+def n_cols():
+    return 10
+
+@pytest.fixture
+def x_norm(n_rows, n_cols):
+    return np.random.randn(n_rows, n_cols)
+```
+
+There is a commented out broken test in the repo which they had to fix, which was a great formative assessment because they had to use their newly formed `git` and testing knowledge to fix the test, commit the changes, make a branch of their "feature" fixing the test, pushing to the branch, and making a pull request to the master branch. It was really rewarding for the students to see their pull request on Github, and to see their commits on the network of contributors to the `gitgoing` repo.
+
+We unfortunately didn't advertise the #gitgoing hashtag before the tutorial so we didn't get any live-tweets, but Ben and I mitigated this and took a picture afterwards:
+
+<blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/hashtag/gitgoing?src=hash">#gitgoing</a> at <a href="https://twitter.com/CodeNeuro">@CodeNeuro</a>! Thanks <a href="https://twitter.com/bensussman">@bensussman</a> for being an awesome co-teacher and everyone for coming! <a href="http://t.co/l0BUhoeWja">pic.twitter.com/l0BUhoeWja</a></p>&mdash; Olga Botvinnik (@olgabot) <a href="https://twitter.com/olgabot/status/586980895397019650">April 11, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+### Spark tutorial
+
+After the `gitgoing` tutorial we had a break and mingled. Then, I went to the Spark tutorial, taught by [Paco Nathan]() from [DataBricks]() (slides [here](http://training.databricks.com/workshop/dbc_intro.pdf)). I've seen Spark demos before but I haven't put in the time to play around with the tools, so this was a great way to get exposed!
+
+I was a little late to the tutorial, so I missed the initial setup. I was handed a slip of paper with a url, username and password that was my personal login to the DataBricks cloud. Paco was doing a "preflight check" of explaining different Spark concepts before we dove in. The key things I took away were:
+
+- **RDD**: Resilient Distributed Dataset. This is the core unit of a spark analysis, where you load in data, and use Spark to indicate that you want it to be parallelized.
+- **`sc`**: "Spark context." This is the object that exists in all the Python library versions with Spark, and is the object that you will be using to create and operate on datasets. 
+
+We used an IPython notebook-style [REPL]() 
+
+### Hackathon
 
 
+## Acknowledgements
+
+Finally, I want to acknowledge all the organizers of the event:
+
+- Jeremy Freeman
+- Nick Sofroniew
+- [Michael Broxton](http://graphics.stanford.edu/~broxton/)
+- [Logan Grosenick](http://web.stanford.edu/~logang/)
+- [Deep Ganguli](https://twitter.com/dgangul1)
+- [Jeff Hammerbacher](https://twitter.com/hackingdata)
 
 [Photo of everyone from dinner]
-If you want to look through all the tweets from the entire event, check out this [Storify](https://storify.com/yangbodu/codeneuro) board.
+
