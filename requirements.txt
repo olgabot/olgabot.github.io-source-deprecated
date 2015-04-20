@@ -3,5 +3,5 @@ pelican
 Markdown
 fabric
 typogrify
-ipython
+ipython-notebook=2
 mistune
