@@ -183,7 +183,7 @@ We used an IPython notebook-style [REPL](http://en.wikipedia.org/wiki/Read%E2%80
 3. Get all the second words of the error lines
 4. Find the errors that were caused by `"mysql"`.
 
-You can see a summary of my notes here:
+You can see a summary of my notes for this first section here:
 
 ```python
 lines = sc.textFile("/mnt/paco/intro/error_log.txt") \
