@@ -159,7 +159,7 @@ code," and that a branch is a single window into that ocean. We also talked
 about merge conflicts, and how they can be really easy to create if, say someone
 renamed one of the arguments of a function, and someone else added an argument,
 and then `git` doesn't know what to do anymore. They picked up on testing pretty
-quickly, and someone asked "well if `git` thinks it's okay, but how do you know
+quickly, and someone asked "well `git` thinks it's okay, but how do you know
 the code will run?" Which brought us directly to testing!
 
 Next, I talked about testing and why it's important. I wrote some simple Python
