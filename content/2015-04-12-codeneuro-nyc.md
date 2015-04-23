@@ -185,7 +185,7 @@ We used an IPython notebook-style [REPL](http://en.wikipedia.org/wiki/Read%E2%80
 
 You can see a summary of my notes here:
 
-```
+```python
 lines = sc.textFile("/mnt/paco/intro/error_log.txt") \
   .map(lambda x: x.split("\t"))
 errors = lines.filter(lambda x: x[0] == "ERROR")
