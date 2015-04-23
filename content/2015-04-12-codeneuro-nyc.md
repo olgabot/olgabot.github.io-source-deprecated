@@ -242,7 +242,7 @@ The hackathon was centered around the [neurofinder](http://codeneuro.org/neurofi
 
 First, everyone introduced themselves and the group organically split into a few groups: the website, API input/output formatting, implementing algorithms, and designing metrics.
 
-The website team was composed of five people with web development frontend/backend experience. They generated some prototype websites and code **Jeremy/Nick: is there a link for the code here??**
+The website team was composed of five people with web development frontend/backend experience. They generated some prototype websites and code, all available on [github](https://github.com/codeneuro/neurofinder), and hopefully launching in beta soon!
 
 Another group of about 25 worked on the API and the input/output formats, with their final notes added to [this wiki](https://github.com/CodeNeuro/neurofinder/wiki).
 
