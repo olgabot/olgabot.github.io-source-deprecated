@@ -1,6 +1,6 @@
 Title: CodeNeuro NYC 2015
 Date: 2015-04-12 22:21
-Modified: 2015-04-12 22:21
+Modified: 2015-04-22 22:21
 Category: conferences
 Tags: programming, conferences, bioinformatics, neuroscience
 Slug: codeneuro-nyc-2015
@@ -137,11 +137,42 @@ Then, people split up about 50/50 for the tutorials and the hackathon.
 
 ### `gitgoing` tutorial
 
-Then, Ben Sussman and I taught a tutorial called [gitgoing](https://github.com/CodeNeuro/gitgoing) to quickly teach scientists the version control system [`git`](http://en.wikipedia.org/wiki/Git_%28software%29) and code testing via [`py.test`](http://pytest.org/) and integration systems via [Travis-CI](https://travis-ci.org/). We had about 20-30 attendees. The goal was to get the scientists acquainted with common tools in open source software so that they could contribute themselves. It was kind of like a mini [Software Carpentry](http://software-carpentry.org/) workshop, but we assumed our target audience had some coding experience, and we didn't take the time to explain computer science fundamentals like variables, loops, flow control, etc.
+Then, Ben Sussman and I taught a tutorial called
+[gitgoing](https://github.com/CodeNeuro/gitgoing) to quickly teach scientists
+the version control system
+[`git`](http://en.wikipedia.org/wiki/Git_%28software%29) and code testing via
+[`py.test`](http://pytest.org/) and integration systems via [Travis-CI](https://travis-ci.org/). We had about 20-30 attendees. The goal was to get the
+scientists acquainted with common tools in open source software so that they
+could contribute themselves. It was kind of like a mini [Software
+Carpentry](http://software-carpentry.org/) workshop, but we assumed our target
+audience had some coding experience, and we didn't take the time to explain
+computer science fundamentals like variables, loops, flow control, etc.
 
-Our class was structured exactly as laid out in the `README.md` file. First we setup their computers so they had `git` and Python 2.7. This took about an hour total to get everyone done. Some people finished faster and started moving on to the `git` section. Then Ben did an awesome explanation of `git`, and I learned a bunch of stuff! I didn't realize that when you `git clone` a repo, you're getting ENTIRE history of the project, so that makes sense why downloading all of [IPython](ipython.org)/[Jupyter](https://jupyter.org/) takes forever. It was also a really helpful analogy to describe the entire repository as an "ocean of code," and that a branch is a single window into that ocean. We also talked about merge conflicts, and how they can be really easy to create if, say someone renamed one of the arguments of a function, and someone else added an argument, and then `git` doesn't know what to do anymore. They picked up on testing pretty quickly, and someone asked "well if `git` thinks it's okay, but how do you know the code will run?" Which brought us directly to testing!
+Our class was structured exactly as laid out in the `README.md` file. First we
+setup their computers so they had `git` and Python 2.7. This took about an hour
+total to get everyone done. Some people finished faster and started moving on to
+the `git` section. Then Ben did an awesome explanation of `git`, and I learned a
+bunch of stuff! I didn't realize that when you `git clone` a repo, you're
+getting ENTIRE history of the project, so that makes sense why downloading all
+of [IPython](ipython.org)/[Jupyter](https://jupyter.org/) takes forever. It was
+also a really helpful analogy to describe the entire repository as an "ocean of
+code," and that a branch is a single window into that ocean. We also talked
+about merge conflicts, and how they can be really easy to create if, say someone
+renamed one of the arguments of a function, and someone else added an argument,
+and then `git` doesn't know what to do anymore. They picked up on testing pretty
+quickly, and someone asked "well if `git` thinks it's okay, but how do you know
+the code will run?" Which brought us directly to testing!
 
-Next, I talked about testing and why it's important. I wrote some simple Python code with functions like `mean_plus_one`, `std_plus_one`, and `cv` (coefficient of variance). They were just slight variations on the true [`numpy`](http://www.numpy.org/) functions so the learners couldn't just use the `numpy` version. We looked at the test file, `test_gitgoing.py` which used `py.test`'s fixtures, which take care of the `setUp` and `tearDown` methods that some other testing frameworks have. We saw a simple example of fixtures, which creates a 20x10 matrix of normally distributed random numbers. These could have been set as integers, I just wanted to illustrate how you can create new fixtures from existing ones.
+Next, I talked about testing and why it's important. I wrote some simple Python
+code with functions like `mean_plus_one`, `std_plus_one`, and `cv` (coefficient
+of variance). They were just slight variations on the true
+[`numpy`](http://www.numpy.org/) functions so the learners couldn't just use the
+`numpy` version. We looked at the test file, `test_gitgoing.py` which used
+`py.test`'s fixtures, which take care of the `setUp` and `tearDown` methods that
+some other testing frameworks have. We saw a simple example of fixtures, which
+creates a 20x10 matrix of normally distributed random numbers. These could have
+been set as integers, I just wanted to illustrate how you can create new
+fixtures from existing ones.
 
 ```python
 import numpy as np
@@ -169,7 +200,7 @@ We unfortunately didn't advertise the #gitgoing hashtag before the tutorial so w
 
 ### Spark tutorial
 
-After the `gitgoing` tutorial we had a break and mingled. Then, I went to the Spark tutorial, taught by [Paco Nathan]() from [DataBricks]() (slides [here](http://training.databricks.com/workshop/dbc_intro.pdf)). I've seen Spark demos before but I haven't put in the time to play around with the tools, so this was a great way to get exposed!
+After the `gitgoing` tutorial we had a break and mingled. Then, I went to the Spark tutorial, taught by [Paco Nathan](http://liber118.com/pxn/) from [DataBricks](https://databricks.com/) (slides [here](http://training.databricks.com/workshop/dbc_intro.pdf)). I've seen Spark demos before but I haven't put in the time to play around with the tools, so this was a great way to get exposed!
 
 I was a little late to the tutorial, so I missed the initial setup. I was handed a slip of paper with a url, username and password that was my personal login to the DataBricks cloud. Paco was doing a "preflight check" of explaining different Spark concepts before we dove in. The key things I took away were:
 
