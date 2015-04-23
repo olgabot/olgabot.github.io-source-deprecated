@@ -6,7 +6,6 @@ Tags: programming, conferences, bioinformatics, neuroscience
 Slug: codeneuro-nyc-2015
 Authors: Olga Botvinnik
 Summary: Last weekend I attended the [CodeNeuro NYC](http://codeneuro.org/2015/NYC/) conference, which is a conference for neuroscientists, programmers, and everything in between. It was a unique experience because it had both the excitement and energy of a tech conference, and the pure, unadulterated zest for knowledge of a scientific conference.
-status: draft
 
 Last weekend I attended the [CodeNeuro NYC](http://codeneuro.org/2015/NYC/)
 conference, which is a conference for neuroscientists, programmers, and
