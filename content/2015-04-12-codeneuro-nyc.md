@@ -6,6 +6,7 @@ Tags: programming, conferences, bioinformatics, neuroscience
 Slug: codeneuro-nyc-2015
 Authors: Olga Botvinnik
 Summary: Last weekend I attended the [CodeNeuro NYC](http://codeneuro.org/2015/NYC/) conference, which is a conference for neuroscientists, programmers, and everything in between. It was a unique experience because it had both the excitement and energy of a tech conference, and the pure, unadulterated zest for knowledge of a scientific conference.
+status: draft
 
 Last weekend I attended the [CodeNeuro NYC](http://codeneuro.org/2015/NYC/)
 conference, which is a conference for neuroscientists, programmers, and
@@ -80,7 +81,6 @@ presenter.
 
 <blockquote class="twitter-tweet" lang="en"><p>Great talk by <a href="https://twitter.com/placoid">@placoid</a> at <a href="https://twitter.com/CodeNeuro">@CodeNeuro</a> just now - apparently rotational bearings on planes create 12 exabytes of data / day... wow <a href="https://twitter.com/hashtag/bigdata?src=hash">#bigdata</a></p>&mdash; Alice Lloyd George (@AMLG23) <a href="https://twitter.com/AMLG23/status/586689726196883458">April 11, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-[The most retweeted talks?? Maybe a Storify of the @CodeNeuro account for April 10th 2015]
 
 After all the talks, there was a panel led by Jeremy with some giants of
 neuroscientists, Tony Movshon, Eve Marder and Larry Abbott. A recurring theme
