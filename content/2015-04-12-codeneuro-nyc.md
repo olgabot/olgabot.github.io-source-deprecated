@@ -66,7 +66,7 @@ screenshot:
 <blockquote class="twitter-tweet" lang="en"><p>Picture of <a href="https://twitter.com/hashtag/realTimeData?src=hash">#realTimeData</a> including mine <a href="https://twitter.com/hashtag/codeNeuro?src=hash">#codeNeuro</a> <a href="http://t.co/VCIfFlFHTK">pic.twitter.com/VCIfFlFHTK</a></p>&mdash; aybuke turker (@aybuketurker) <a href="https://twitter.com/aybuketurker/status/586678871942111232">April 10, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-**Optogenetics**. This was a really interesting talk which uses [optogenetics](http://en.wikipedia.org/wiki/Optogenetics), which is a way that you can control the brain with light. Researchers genetically insert [rhodopsin](http://en.wikipedia.org/wiki/Rhodopsin), which is the light-sensitive protein that makes our eyes work, into neurons, which then makes them light sensitive. As a result, you can then turn specific neurons on and off with light! This talk used both this tool of optogenetics to stimulate/inhibit specific neurons, and calcium imaging to record their responses. 
+**Optogenetics**. This was a really interesting talk about [optogenetics](http://en.wikipedia.org/wiki/Optogenetics), which is a way that you can control the brain with light. Researchers genetically insert [rhodopsin](http://en.wikipedia.org/wiki/Rhodopsin), which is the light-sensitive protein that makes our eyes work, into neurons, which then makes them light sensitive. As a result, you can then turn specific neurons on and off with light! This talk used both this tool of optogenetics to stimulate/inhibit specific neurons, and calcium imaging to record their responses. 
 
 <blockquote class="twitter-tweet" lang="en"><p>A. Packer shows some amazing tools to simultaneously record + stimulate ensembles of neurons with <a href="https://twitter.com/hashtag/CaImaging?src=hash">#CaImaging</a> and <a href="https://twitter.com/hashtag/optogenetics?src=hash">#optogenetics</a>. <a href="https://twitter.com/hashtag/codeneuro?src=hash">#codeneuro</a></p>&mdash; Felipe Gerhard (@neuroflips) <a href="https://twitter.com/neuroflips/status/586685623068717056">April 11, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -136,7 +136,7 @@ Then, people split up about 50/50 for the tutorials and the hackathon.
 
 ### `gitgoing` tutorial
 
-Then, Ben Sussman and I taught a tutorial called
+Ben Sussman and I taught a tutorial called
 [gitgoing](https://github.com/CodeNeuro/gitgoing) to quickly teach scientists
 the version control system
 [`git`](http://en.wikipedia.org/wiki/Git_%28software%29) and code testing via
