@@ -46,7 +46,7 @@ We got started with the talks, which we had three 10 minute (ish) talks, followe
 4. Paco Nathan (Databricks): Spark for big data
 5. Eliza Chang (The Data Incubator): PhD to Data Scientist
 6. Michael Dewar (NYT): Real-time analytics on streaming data [[github repo for presentation](https://github.com/mikedewar/codeneuro_streamtools)] | [[github repo for `streamtools` package](https://github.com/nytlabs/streamtools)] 
-7. Hilary Parker (Etsy): Data science at Etsy (+cute statistical plushies!)
+7. Hilary Parker (Etsy): Data science at Etsy (+[cute statistical plushies](https://twitter.com/CodeNeuro/status/586696965502689280)!)
 8. Brendan Lake (NYU): Teaching computers to scribble characters like humans
 9. Olga Botvinnik, me! (UCSD): `flotilla`: An open-source Python package for iterative machine learning analyses [[slides](http://nbviewer.ipython.org/format/slides/gist/olgabot/2ee1087d74df46c842df#/)]
 
