@@ -235,18 +235,18 @@ The next part of the tutorial, we learned how to use `flatMap`, and then how to 
 
 The hackathon was centered around the [neurofinder](http://codeneuro.org/neurofinder/) challenge, which is to try and extract neuronal signals from Calcium imaging data. The goals were go:
 
-1. Refine a standardized API for "source extraction" algorithms, including input/ouptu formats
+1. Refine a standardized API for "source extraction" algorithms, including input/ouptut formats
 2. Work on evaluation metrics for algorithms and agree on ground truth definition
 3. Work on incorporating existing algorithms into this API
-4. Work on front end/back end of a website that would automatically run submitted algorithms on the test data, get the results and upload them to a leaderboard
+4. Work on the frontend/backend of a website that would automatically run submitted algorithms on the test data, get the results and upload them to a leaderboard
 
 First, everyone introduced themselves and the group organically split into a few groups: the website, API input/output formatting, implementing algorithms, and designing metrics.
 
-The website team was composed of five people who had web development frontend/backend experience went to work on the website. They generated some prototype websites and code **Jeremy/Nick: is there a link for the code here??**
+The website team was composed of five people with web development frontend/backend experience. They generated some prototype websites and code **Jeremy/Nick: is there a link for the code here??**
 
 Another group of about 25 worked on the API and the input/output formats, with their final notes added to [this wiki](https://github.com/CodeNeuro/neurofinder/wiki).
 
-Another group of 10-20 split to work on incorporating existing algorithms in to this API. The rest worked on defining evaluation metrics for algorithms and the "ground truth" definitions of "what is a neuron" for these methods. They implemented some evaluation metrics, and developed an initial ground truth definition of manual centers an morphological boundaries. While this initial "ground truth" may be circular, it's a great start.
+Another group of 10-20 split to work on incorporating existing algorithms in to this API. The rest worked on defining evaluation metrics for algorithms and the "ground truth" definitions of "what is a neuron" for these methods. They implemented some evaluation metrics, and developed an initial ground truth definition of manual centers and morphological boundaries. They discussed that this initial "ground truth" risks circularity, but is still a solid start.
 
 There were still people working well into the evening!
 
@@ -261,9 +261,10 @@ Afterwards, we all hung out at a nice dinner:
 
 Finally, I want to acknowledge all the organizers of the event:
 
-- Jeremy Freeman
-- Nick Sofroniew
+- [Jeremy Freeman](http://jeremyfreeman.net)
+- [Nick Sofroniew](https://twitter.com/neuro_nick)
 - [Michael Broxton](http://graphics.stanford.edu/~broxton/)
+- [Matt Conlen](http://www.mathisonian.com/)
 - [Logan Grosenick](http://web.stanford.edu/~logang/)
 - [Deep Ganguli](https://twitter.com/dgangul1)
 - [Jeff Hammerbacher](https://twitter.com/hackingdata)
