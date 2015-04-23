@@ -18,9 +18,9 @@ for knowledge of a scientific conference.
 The first day of the conference started after the workday on Friday at 5pm at
 the [New Museum](http://www.newmuseum.org/) in Little Italy, Manhattan, NYC.
 This was the first time I'd been to this place and it was really awesome, even
-from the outside! Check it out:
+from the outside! Check it out, plus some other photos I took from the conference:
 
-[photo of outside]
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/q3c57"><a href="//imgur.com/a/q3c57">codeneuro nyc 2015</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 (FYI If you want to look through all the tweets from the entire event, check out this [Storify](https://storify.com/yangbodu/codeneuro) board.)
 
@@ -36,7 +36,6 @@ people doing super interesting things in neuroscience.
 <blockquote class="twitter-tweet" lang="en"><p>view from <a href="https://twitter.com/CodeNeuro">@CodeNeuro</a>... <a href="http://t.co/kInTbaFWHW">pic.twitter.com/kInTbaFWHW</a></p>&mdash; Angela Radulescu (@angitweets) <a href="https://twitter.com/angitweets/status/586659812198522880">April 10, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-[photo collage/click through? of photos, mine plus curated from twitter from the event]
 
 We got started with the talks, which we had three 10 minute (ish) talks, followed by a half hour (ish) break. It was a nice format that we could chat and break in between the talks not only to get a mental break but also discuss the concepts presented by the previous talks in the context of neuroscience. Here's all the talks:
 
@@ -134,9 +133,11 @@ space, and started off with some kickass bagels and lox/salmon:
 <blockquote class="twitter-tweet" lang="en"><p>breakfast begins <a href="http://t.co/55QljXZqkw">pic.twitter.com/55QljXZqkw</a></p>&mdash; CodeNeuro (@CodeNeuro) <a href="https://twitter.com/CodeNeuro/status/586893786212651008">April 11, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+Then, people split up about 50/50 for the tutorials and the hackathon.
+
 ### `gitgoing` tutorial
 
-Then, Ben Sussman and I taught a tutorial called [gitgoing](https://github.com/CodeNeuro/gitgoing) to quickly teach scientists the version control system [`git`](http://en.wikipedia.org/wiki/Git_%28software%29) and code testing via [`py.test`](http://pytest.org/) and integration systems via [Travis-CI](https://travis-ci.org/). The goal was to get the scientists acquainted with common tools in open source software so that they could contribute themselves. It was kind of like a mini [Software Carpentry](http://software-carpentry.org/) workshop, but we assumed our target audience had some coding experience, and we didn't take the time to explain computer science fundamentals like variables, loops, flow control, etc.
+Then, Ben Sussman and I taught a tutorial called [gitgoing](https://github.com/CodeNeuro/gitgoing) to quickly teach scientists the version control system [`git`](http://en.wikipedia.org/wiki/Git_%28software%29) and code testing via [`py.test`](http://pytest.org/) and integration systems via [Travis-CI](https://travis-ci.org/). We had about 20-30 attendees. The goal was to get the scientists acquainted with common tools in open source software so that they could contribute themselves. It was kind of like a mini [Software Carpentry](http://software-carpentry.org/) workshop, but we assumed our target audience had some coding experience, and we didn't take the time to explain computer science fundamentals like variables, loops, flow control, etc.
 
 Our class was structured exactly as laid out in the `README.md` file. First we setup their computers so they had `git` and Python 2.7. This took about an hour total to get everyone done. Some people finished faster and started moving on to the `git` section. Then Ben did an awesome explanation of `git`, and I learned a bunch of stuff! I didn't realize that when you `git clone` a repo, you're getting ENTIRE history of the project, so that makes sense why downloading all of [IPython](ipython.org)/[Jupyter](https://jupyter.org/) takes forever. It was also a really helpful analogy to describe the entire repository as an "ocean of code," and that a branch is a single window into that ocean. We also talked about merge conflicts, and how they can be really easy to create if, say someone renamed one of the arguments of a function, and someone else added an argument, and then `git` doesn't know what to do anymore. They picked up on testing pretty quickly, and someone asked "well if `git` thinks it's okay, but how do you know the code will run?" Which brought us directly to testing!
 
@@ -175,10 +176,56 @@ I was a little late to the tutorial, so I missed the initial setup. I was handed
 - **RDD**: Resilient Distributed Dataset. This is the core unit of a spark analysis, where you load in data, and use Spark to indicate that you want it to be parallelized.
 - **`sc`**: "Spark context." This is the object that exists in all the Python library versions with Spark, and is the object that you will be using to create and operate on datasets. 
 
-We used an IPython notebook-style [REPL]() 
+We used an IPython notebook-style [REPL](http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) interface, which was really nice because we could see the output from our commands right away. We continued with learning how to:
+
+1. Read text files and separate lines by tabs
+2. Filter for the first word of the line to be `ERROR`
+3. Get all the second words of the error lines
+4. Find the errors that were caused by `"mysql"`.
+
+You can see a summary of my notes here:
+
+```
+lines = sc.textFile("/mnt/paco/intro/error_log.txt") \
+  .map(lambda x: x.split("\t"))
+errors = lines.filter(lambda x: x[0] == "ERROR")
+messages = errors.map(lambda x: x[1])
+messages.filter(lambda x: x.find("mysql") > -1).count()
+
+# At this point, the data is loaded into memory on the workers and you don't
+# need to attack disk again, so this operation is very fast
+messages.filter(lambda x: x.find("php") > -1).count()
+```
+
+Yay, we learned how to read files! Always good :)
+
+The next part of the tutorial, we learned how to use `flatMap`, and then how to `join` several RDDs on their `(key, value)` pairs. After the break, we had a mini lecture about "Computational thinking" where we had to use what we learned so far to find all the instances of the word "Spark" in two files. If you're interested, you can see my full notes [here](https://gist.github.com/olgabot/ab058876b3bda6198f25).
 
 ### Hackathon
 
+The hackathon was centered around the [neurofinder](http://codeneuro.org/neurofinder/) challenge, which is to try and extract neuronal signals from Calcium imaging data. The goals were go:
+
+1. Refine a standardized API for "source extraction" algorithms, including input/ouptu formats
+2. Work on evaluation metrics for algorithms and agree on ground truth definition
+3. Work on incorporating existing algorithms into this API
+4. Work on front end/back end of a website that would automatically run submitted algorithms on the test data, get the results and upload them to a leaderboard
+
+First, everyone introduced themselves and the group organically split into a few groups: the website, API input/output formatting, implementing algorithms, and designing metrics.
+
+The website team was composed of five people who had web development frontend/backend experience went to work on the website. They generated some prototype websites and code **Jeremy/Nick: is there a link for the code here??**
+
+Another group of about 25 worked on the API and the input/output formats, with their final notes added to [this wiki](https://github.com/CodeNeuro/neurofinder/wiki).
+
+Another group of 10-20 split to work on incorporating existing algorithms in to this API. The rest worked on defining evaluation metrics for algorithms and the "ground truth" definitions of "what is a neuron" for these methods. They implemented some evaluation metrics, and developed an initial ground truth definition of manual centers an morphological boundaries. While this initial "ground truth" may be circular, it's a great start.
+
+There were still people working well into the evening!
+
+<blockquote class="twitter-tweet" lang="en"><p>the codeneuro hardcore, still rocking! <a href="http://t.co/TyxmlSNOZB">pic.twitter.com/TyxmlSNOZB</a></p>&mdash; CodeNeuro (@CodeNeuro) <a href="https://twitter.com/CodeNeuro/status/587072775057231872">April 12, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Afterwards, we all hung out at a nice dinner:
+
+![CodeNeuro after-dinner party](http://i.imgur.com/KY9smQR.jpg)
 
 ## Acknowledgements
 
@@ -190,6 +237,4 @@ Finally, I want to acknowledge all the organizers of the event:
 - [Logan Grosenick](http://web.stanford.edu/~logang/)
 - [Deep Ganguli](https://twitter.com/dgangul1)
 - [Jeff Hammerbacher](https://twitter.com/hackingdata)
-
-[Photo of everyone from dinner]
 
