@@ -66,7 +66,7 @@ screenshot:
 <blockquote class="twitter-tweet" lang="en"><p>Picture of <a href="https://twitter.com/hashtag/realTimeData?src=hash">#realTimeData</a> including mine <a href="https://twitter.com/hashtag/codeNeuro?src=hash">#codeNeuro</a> <a href="http://t.co/VCIfFlFHTK">pic.twitter.com/VCIfFlFHTK</a></p>&mdash; aybuke turker (@aybuketurker) <a href="https://twitter.com/aybuketurker/status/586678871942111232">April 10, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-**Optogenetics**. This was a really interesting talk which uses [optogenetics](http://en.wikipedia.org/wiki/Optogenetics), which is a way that you can control the brain with light. Researchers genetically insert [rhodopsin](http://en.wikipedia.org/wiki/Rhodopsin), which is the light-sensitive protein that makes our eyes work, into neurons, which then makes them light sensitive. As a result, you can then turn specific neurons on and off with light! This talk used both this tool of optogenetics to stimulate/inhibit specific neurons, and calcium imaging to record their responses. 
+**Optogenetics**. This was a really interesting talk about [optogenetics](http://en.wikipedia.org/wiki/Optogenetics), which is a way that you can control the brain with light. Researchers genetically insert [rhodopsin](http://en.wikipedia.org/wiki/Rhodopsin), which is the light-sensitive protein that makes our eyes work, into neurons, which then makes them light sensitive. As a result, you can then turn specific neurons on and off with light! This talk used both this tool of optogenetics to stimulate/inhibit specific neurons, and calcium imaging to record their responses. 
 
 <blockquote class="twitter-tweet" lang="en"><p>A. Packer shows some amazing tools to simultaneously record + stimulate ensembles of neurons with <a href="https://twitter.com/hashtag/CaImaging?src=hash">#CaImaging</a> and <a href="https://twitter.com/hashtag/optogenetics?src=hash">#optogenetics</a>. <a href="https://twitter.com/hashtag/codeneuro?src=hash">#codeneuro</a></p>&mdash; Felipe Gerhard (@neuroflips) <a href="https://twitter.com/neuroflips/status/586685623068717056">April 11, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -136,7 +136,7 @@ Then, people split up about 50/50 for the tutorials and the hackathon.
 
 ### `gitgoing` tutorial
 
-Then, Ben Sussman and I taught a tutorial called
+Ben Sussman and I taught a tutorial called
 [gitgoing](https://github.com/CodeNeuro/gitgoing) to quickly teach scientists
 the version control system
 [`git`](http://en.wikipedia.org/wiki/Git_%28software%29) and code testing via
@@ -159,7 +159,7 @@ code," and that a branch is a single window into that ocean. We also talked
 about merge conflicts, and how they can be really easy to create if, say someone
 renamed one of the arguments of a function, and someone else added an argument,
 and then `git` doesn't know what to do anymore. They picked up on testing pretty
-quickly, and someone asked "well if `git` thinks it's okay, but how do you know
+quickly, and someone asked "well `git` thinks it's okay, but how do you know
 the code will run?" Which brought us directly to testing!
 
 Next, I talked about testing and why it's important. I wrote some simple Python
@@ -235,18 +235,18 @@ The next part of the tutorial, we learned how to use `flatMap`, and then how to 
 
 The hackathon was centered around the [neurofinder](http://codeneuro.org/neurofinder/) challenge, which is to try and extract neuronal signals from Calcium imaging data. The goals were go:
 
-1. Refine a standardized API for "source extraction" algorithms, including input/ouptu formats
+1. Refine a standardized API for "source extraction" algorithms, including input/ouptut formats
 2. Work on evaluation metrics for algorithms and agree on ground truth definition
 3. Work on incorporating existing algorithms into this API
-4. Work on front end/back end of a website that would automatically run submitted algorithms on the test data, get the results and upload them to a leaderboard
+4. Work on the frontend/backend of a website that would automatically run submitted algorithms on the test data, get the results and upload them to a leaderboard
 
 First, everyone introduced themselves and the group organically split into a few groups: the website, API input/output formatting, implementing algorithms, and designing metrics.
 
-The website team was composed of five people who had web development frontend/backend experience went to work on the website. They generated some prototype websites and code **Jeremy/Nick: is there a link for the code here??**
+The website team was composed of five people with web development frontend/backend experience. They generated some prototype websites and code, all available on [github](https://github.com/codeneuro/neurofinder), and hopefully launching in beta soon!
 
 Another group of about 25 worked on the API and the input/output formats, with their final notes added to [this wiki](https://github.com/CodeNeuro/neurofinder/wiki).
 
-Another group of 10-20 split to work on incorporating existing algorithms in to this API. The rest worked on defining evaluation metrics for algorithms and the "ground truth" definitions of "what is a neuron" for these methods. They implemented some evaluation metrics, and developed an initial ground truth definition of manual centers an morphological boundaries. While this initial "ground truth" may be circular, it's a great start.
+Another group of 10-20 split to work on incorporating existing algorithms in to this API. The rest worked on defining evaluation metrics for algorithms and the "ground truth" definitions of "what is a neuron" for these methods. They implemented some evaluation metrics, and developed an initial ground truth definition of manual centers and morphological boundaries. They discussed that this initial "ground truth" risks circularity, but is still a solid start.
 
 There were still people working well into the evening!
 
@@ -261,9 +261,10 @@ Afterwards, we all hung out at a nice dinner:
 
 Finally, I want to acknowledge all the organizers of the event:
 
-- Jeremy Freeman
-- Nick Sofroniew
+- [Jeremy Freeman](http://jeremyfreeman.net)
+- [Nick Sofroniew](https://twitter.com/neuro_nick)
 - [Michael Broxton](http://graphics.stanford.edu/~broxton/)
+- [Matt Conlen](http://www.mathisonian.com/)
 - [Logan Grosenick](http://web.stanford.edu/~logang/)
 - [Deep Ganguli](https://twitter.com/dgangul1)
 - [Jeff Hammerbacher](https://twitter.com/hackingdata)
