@@ -66,7 +66,7 @@ What I put in my packet
 
 ### My packet as an example ###
 
-Here is my packet [[21MB PDF]](http://olgabotvinnik.com/blog_figures/2012-08-31_How_to_ask_for_a_letter_of_recommendation/OlgaBotvinnik_RecommendationPacket.pdf), edited for privacy, which I gave to one of my recommenders. You may notice a table of contents. After I printed out the packet, I [coil-bound it at Kinko's](http://www.fedex.com/us/office/binding-finishing-laminating.html) with a cardstock back and hand-wrote the page numbers on each page. As for the essays in the packet, keep in mind that these were truly draft essays and that my final submissions were quite different. Also, I did not win a Hertz or Paul and Daisy Soros fellowship, so they are not examples of winning essays. I did, however, receive an Honorable Mention for my NSF essays, though the one in here is not the final version. There will be more posts about essay writing later.
+Here is my packet [[21MB PDF]](https://www.dropbox.com/s/boxi0fdyphmuigg/OlgaBotvinnik_RecommendationPacket.pdf?dl=0), edited for privacy, which I gave to one of my recommenders. You may notice a table of contents. After I printed out the packet, I [coil-bound it at Kinko's](http://www.fedex.com/us/office/binding-finishing-laminating.html) with a cardstock back and hand-wrote the page numbers on each page. As for the essays in the packet, keep in mind that these were truly draft essays and that my final submissions were quite different. Also, I did not win a Hertz or Paul and Daisy Soros fellowship, so they are not examples of winning essays. I did, however, receive an Honorable Mention for my NSF essays, though the one in here is not the final version. There will be more posts about essay writing later.
 
 
 
