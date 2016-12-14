@@ -19,7 +19,7 @@ To help keep track of your deep work, Cal Newport suggests [planning every minut
 
 Here's the step-by-step of my planning rituals, with pointers to the columns of the figure below.
 
-![Planning vs actual outcomes](images/plan_vs_actual-300ppi.png)
+![Planning vs actual outcomes](/images/plan_vs_actual-300ppi.png)
 
 1. At the beginning of the week, I create a new markdown file and start filling it in with notes from last week and plans for this week. Sometimes my notes start with a big ole rant about some problem I've been running into, or have a big rolling todo list that I keep updated for the week. **The most important thing about each week's file is that each day is separate.** This way, you can keep track of the incremental progress you made that day, and what you hope to accomplish that day. (First column - files for each week)
 1. Before each day starts, e.g. during "shutdown" time the day before (or sometimes on Fridays for the next Monday), I plan out what I want to do on Google Calendar. (Second column - plan for each day)
@@ -33,7 +33,7 @@ Here's the step-by-step of my planning rituals, with pointers to the columns of 
 
 Here's where I write the hours and minutes I spent in deep work each day. I find that it helps keep me motivated to sustain the work and get more hours in the next day.
 
-![Monthly tally](images/deep_work_monthly_tally.jpg)
+![Monthly tally](/images/deep_work_monthly_tally.jpg)
 
 Personally, I've found that ~4 hours of deep work is about when I max out, because if I do 5 hours one day, next day I end up doing 2 hours. But 4 hours a day is sustainable. As you can see, December hasn't been that productive of a month for me - only about 2-3 hours of deep work a day. The 40m day was one where I was traveling and just didn't set aside a time to fully focus and was at the mercy of my impulses.
 
