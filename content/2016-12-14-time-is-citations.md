@@ -19,7 +19,7 @@ To help keep track of your deep work, Cal Newport suggests [planning every minut
 
 Here's the step-by-step of my planning rituals, with pointers to the columns of the figure below.
 
-![Planning vs actual outcomes](/images/plan_vs_actual-300ppi.png)
+[![Planning vs actual outcomes](/images/plan_vs_actual-300ppi.png)](/images/plan_vs_actual-300ppi.png)
 
 1. At the beginning of the week, I create a new markdown file and start filling it in with notes from last week and plans for this week. Sometimes my notes start with a big ole rant about some problem I've been running into, or have a big rolling todo list that I keep updated for the week. (First column - files for each week)
 	- **The most important thing about each week's file is that each day is a separate section.** This way, you can keep track of the incremental progress you made that day, and what you hope to accomplish that day. 
@@ -35,7 +35,7 @@ Here's the step-by-step of my planning rituals, with pointers to the columns of 
 
 Here's where I write the hours and minutes I spent in deep work each day. I find that it helps keep me motivated to sustain the work and get more hours in the next day.
 
-![Monthly tally](/images/deep_work_monthly_tally.jpg)
+[![Monthly tally](/images/deep_work_monthly_tally.jpg)](/images/deep_work_monthly_tally.jpg)
 
 Personally, I've found that ~4 hours of deep work is about when I max out, because if I do 5 hours one day, next day I end up doing 2 hours. But 4 hours a day is sustainable. As you can see, December hasn't been that productive of a month for me - only about 2-3 hours of deep work a day. The 40m day was one where I was traveling and just didn't set aside a time to fully focus and was at the mercy of my impulses.
 
@@ -45,7 +45,7 @@ When you first start doing it, you may get frustrated that you're not getting mu
 
 I work in an "open office" environment which makes doing deep work quite difficult as there is constant movement and potential for interruptions around me. Our lab is quite collaborative so there *are* times when your input or insight is needed for someone's project to go through. I made the mistake of taking this to an extreme and getting very frustrated when people would interrupt me while I was "in the zone" and tried to set boundaries but this closed me off from others. As Richard Hamming says in his fabulous talk, [You and Your Research](http://www.cs.virginia.edu/~robins/YouAndYourResearch.html) about people who closed themselves off:
 
-> I noticed the following facts about people who work with the door open or the door closed. I notice that if you have the door to your office closed, you get more work done today and tomorrow, and you are more productive than most. But 10 years later somehow you don't know quite know what problems are worth working on; all the hard work you do is sort of tangential in importance. He who works with the door open gets all kinds of interruptions, but he also occasionally gets clues as to what the world is and what might be important. Now I cannot prove the cause and effect sequence because you might say, "The closed door is symbolic of a closed mind." I don't know. But I can say there is a pretty good correlation between those who work with the doors open and those who ultimately do important things, although people who work with doors closed often work harder. Somehow they seem to work on slightly the wrong thing - not much, but enough that they miss fame.
+> *I noticed the following facts about people who work with the door open or the door closed. I notice that if you have the door to your office closed, you get more work done today and tomorrow, and you are more productive than most. But 10 years later somehow you don't know quite know what problems are worth working on; all the hard work you do is sort of tangential in importance. He who works with the door open gets all kinds of interruptions, but he also occasionally gets clues as to what the world is and what might be important. Now I cannot prove the cause and effect sequence because you might say, "The closed door is symbolic of a closed mind." I don't know. But I can say there is a pretty good correlation between those who work with the doors open and those who ultimately do important things, although people who work with doors closed often work harder. Somehow they seem to work on slightly the wrong thing - not much, but enough that they miss fame.*
 
 So I had to learn to temper this desire to get solid work done and strike a balance between being available and performing intense work. Now, I take lunch off to socialize and chat with the group (rather than working through it), take my headphones off when I am available to work, and when I really need to get work done, I run away and go hide in a place that nobody can find me.
 
