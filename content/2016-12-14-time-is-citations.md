@@ -17,7 +17,7 @@ To help keep track of your deep work, Cal Newport suggests [planning every minut
 
 ## My days, step-by-step
 
-Here's the step-by-step of my planning rituals, with pointers to the columns of the figure below.
+Here's the step-by-step of my planning rituals, with pointers to the columns of the figure below. The top is a very productive day where even though the plan changed, I still was able to get a lot done (except for those annoying UCSD ethics trainings...). The bottom is a less productive day that was governed by meetings but I was still able to get *something* done. These are fairly good examples, the "bad" examples (that are less productive) are quite boring - I only wrote down an hour or so of deep work so I'm too embarassed to show them.
 
 [![Planning vs actual outcomes](/images/plan_vs_actual-300ppi.png)](/images/plan_vs_actual-300ppi.png)
 
