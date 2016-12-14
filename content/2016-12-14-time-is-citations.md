@@ -2,7 +2,7 @@ Title: Time is Citations: How I Plan My Days
 Date: 2016-12-14 12:01
 Modified: 2016-12-14 12:01
 Category: productivity
-Tags: deep-work, productivity, phd, grad-school
+Tags: deep work, productivity, phd, grad school
 Slug: time-is-citations
 Authors: Olga Botvinnik
 Summary: In business, time is money. But in academia, the currency is not published units but citations of your publications. For someone to not only read your paper but understand and cite it, you need to produce high-quality, readable papers. And that requires deep work.
