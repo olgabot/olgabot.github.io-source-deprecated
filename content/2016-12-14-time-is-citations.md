@@ -19,7 +19,7 @@ To help keep track of your deep work, Cal Newport suggests [planning every minut
 
 Here's the step-by-step of my planning rituals, with pointers to the columns of the figure below. The top is a very productive day where even though the plan changed, I still was able to get a lot done (except for those annoying UCSD ethics trainings...). The bottom is a less productive day that was governed by meetings and talks (including [Aaron Quinlan of `bedtools` fame!](https://twitter.com/gabepratt/status/801148674499690496)) but I was still able to get *something* done. These are fairly good examples, the "bad" examples (that are less productive) are quite boring - I only wrote down an hour or so of deep work so I'm too embarassed to show them.
 
-[![Planning vs actual outcomes](/images/plan_vs_actual-300ppi.png)](/images/plan_vs_actual-300ppi.png)
+[![Planning vs actual outcomes](/images/plan_vs_actual-150ppi.png)](/images/plan_vs_actual-300ppi.png)
 
 1. At the beginning of the week, I create a new markdown file and start filling it in with notes from last week and plans for this week. Sometimes my notes start with a big ole rant about some problem I've been running into, or have a big rolling todo list that I keep updated for the week. (First column - files for each week)
 	- **The most important thing about each week's file is that each day is a separate section.** This way, you can keep track of the incremental progress you made that day, and what you hope to accomplish that day. 
