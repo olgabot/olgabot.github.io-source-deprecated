@@ -26,11 +26,11 @@ Here's the step-by-step of my planning rituals, with pointers to the columns of 
 	- This is instead of doing project-based organization, which I find makes me less motivated because projects take a long time, so at the project-level, it doesn't look like I did much. But if I keep daily progress notes, then I feel better about myself.
 1. Before each day starts, e.g. during "shutdown" time the day before (or sometimes on Fridays for the next Monday), I plan out what I want to do on Google Calendar. (Second column - plan for each day)
 	- I find this works quite well because at the beginning of the day, I'm bursting with energy and want to do *all of the things!* But by the end of the day I've realized that I can only do so much, and I'm much better at prioritizing what's important, while at the beginning of the day I'm much better at *doing* things. So planning at the end of the day works for me.
- 	- I make sure to schedule 30m for "shutdown" at the end of the day. If I don't do this, the system breaks because I stop planning, and I am at the mercy of my morning impulses, rather than being in control of what I'm trying to do.
+ 	- I make sure to schedule 30m for "shutdown" at the end of the day. If I don't do this, the system breaks because I stop planning, and I am at the mercy of my morning impulses, rather than being in control of what I'm trying to do. Skipping this step breaks the cycle and my system is certain to fail.
 1. Throughout the day, I "stopwatch" my time by writing down in my planner the exact minute that I start and stop each activity. (Third column)
  	- If I get interrupted, I end the time and start again
  	- If something comes to mind about an urgent task (e.g. submit travel insurance form), I write it down in my planner or a sticky note so I've captured it, but continue on with my deep work. I do not interrupt my deep work.
-1. At the end of the day, during "shutdown," I briefly write down what I was able to do in my markdown document and what I hope to do tomorrow (Fourth column).
+1. At the end of the day, during "shutdown," I briefly write down what I was able to do in my markdown document and what I hope to do tomorrow (Fourth column), and plan my tomorrow on Google Calendar (Second column). Pretty cyclical, huh?
 1. Finally I write down the hours and minutes of deep work into the monthly part of the planner. (below)
 
 Here's where I write the hours and minutes I spent in deep work each day. I find that it helps keep me motivated to sustain the work and get more hours in the next day.
